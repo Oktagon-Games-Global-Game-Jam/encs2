@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
+    [SerializeField] private bool bIsEnemy;
     [Header("Move")]
     public float m_MoveSpeed = .1f;
     [Header("Reach Taret")]
@@ -23,5 +24,11 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData(entity, new C_MechaPart() { MechaPart = MechaPart});
         dstManager.AddComponentData(entity, new C_Life() { MaxLife = MaxLife, ActualLife = ActualLife });
         dstManager.AddComponentData(entity, new Prefab());
+
+        if (bIsEnemy)
+        {
+            dstManager.AddComponentData(entity, new T_EnemyUnit());
+        }else
+            dstManager.AddComponentData(entity, new T_AllyUnit());
     }
 }
