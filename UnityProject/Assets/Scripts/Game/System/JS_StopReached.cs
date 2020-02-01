@@ -33,7 +33,6 @@ public class JS_StopReached : JobComponentSystem
             Entities.ForEach((int entityInQueryIndex, Entity pEntity, in C_Move pMove, in C_ReachTarget cReachTarget, in C_TargetReached pTargetReached) =>
             {
                 pBuffer.RemoveComponent(entityInQueryIndex, pEntity, typeof(C_Move));
-                pBuffer.RemoveComponent(entityInQueryIndex, pEntity, typeof(C_ReachTarget));
             })
             .WithoutBurst()
             .Schedule(inputDeps);

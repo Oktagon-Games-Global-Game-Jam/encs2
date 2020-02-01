@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b6601be85add84ea9170c602e905ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 0
   m_MoveSpeed: -0.1
   TargetPosition: {x: 9.5, y: 0, z: 0.4}
   ReachDistance: 0
@@ -432,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MechaPart: 2
+  MechaPart: 0
 --- !u!114 &706054612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e819f4ca13b7447a8de52364572bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 0
   m_MoveSpeed: 0.1
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 0
@@ -687,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e819f4ca13b7447a8de52364572bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 0
   m_MoveSpeed: 0.1
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 0
@@ -865,6 +862,7 @@ GameObject:
   - component: {fileID: 1044465660}
   - component: {fileID: 1044465659}
   - component: {fileID: 1044465657}
+  - component: {fileID: 1044465658}
   m_Layer: 0
   m_Name: LegUnit
   m_TagString: Untagged
@@ -898,14 +896,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e819f4ca13b7447a8de52364572bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 0
-  m_MoveSpeed: 0.1
+  m_MoveSpeed: -0.1
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 1
-  MechaPart: 2
+  MechaPart: 0
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: 0
+--- !u!114 &1044465658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044465655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fe0280b5fd36d4b9dd05b1d7bfdd59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 2
+  SpawnAmount: 4
+  MechaLane: 0
+  IsEnemy: 1
+  ReduceTimeBySecond: 0
+  TimeCache: 0
 --- !u!114 &1044465659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 0.01
 --- !u!23 &1386017223
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1180,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f80da92b80a12e48b04dcd64bcaf29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelData: {fileID: 0}
+  m_LevelData: {fileID: 11400000, guid: a511f65cb15cf5f42a5cebd45703d28b, type: 2}
 --- !u!4 &1530420272
 Transform:
   m_ObjectHideFlags: 0
@@ -1228,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MechaPart: 0
+  MechaPart: 2
 --- !u!114 &1723292322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,4 +1330,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 0.01
