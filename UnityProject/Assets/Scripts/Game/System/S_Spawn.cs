@@ -9,12 +9,12 @@ using UnityEngine;
 
 public class S_Spawn : JobComponentSystem
 {
-    private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    private BeginSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
     private EntityQuery m_Query;
     protected override void OnCreate()
     {
         base.OnCreate();
-        m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+        m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<BeginSimulationEntityCommandBufferSystem>();
         m_Query = GetEntityQuery(new ComponentType[]
         {
             ComponentType.ReadWrite<C_SpawnRequest>(), 
@@ -49,12 +49,14 @@ public class S_Spawn : JobComponentSystem
             NativeArray<C_SpawnRequest> tSpawnRequestArray = chunk.GetNativeArray(SpawnRequestChunk);
             for (int i = 0; i < chunk.Count; i++)
             {
-                Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
-                
-                CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new Translation
+                CommandBuffer.SetComponent(firstEntityIndex, tSpawnRequestArray[i].Reference, new Translation
                 {
                     Value = tSpawnRequestArray[i].Position
                 });
+                
+                Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
+                
+               
                 CommandBuffer.DestroyEntity(firstEntityIndex, tEntities[firstEntityIndex + i]);
                 // CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new RotationEulerXYZ
                 // {
