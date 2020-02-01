@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:UnityProject/Assets/Scripts/Game/Tag.meta
+guid: 2334dfc1a1f4f264eb6570dddc9251d0
+=======
 guid: cd19eae9b47c25c4aa22cd2de0f8fad6
+>>>>>>> 97997bd0e46c509fe719a7cbc96e4cdb302946fa:UnityProject/Assets/Scenes/Test.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
