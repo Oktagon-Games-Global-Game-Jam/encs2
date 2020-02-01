@@ -7,38 +7,24 @@ using Unity.Mathematics;
 using UnityEngine;
 using Unity.Entities.UniversalDelegates;
 using Unity.Mathematics;
-
-
-public class JS_Move : JobComponentSystem
+/*
+class JS_UpdateTargetPosition : JobComponentSystem
 {
-    private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    EntityQuery m_MechasQuery;
     protected override void OnCreate()
     {
         base.OnCreate();
-        m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+        m_MechasQuery = GetEntityQuery(new ComponentType[] { typeof(T_Target), typeof(Translation) });
     }
-
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         float fDelta = Time.DeltaTime;
-        return MoveSchedule(inputDeps, fDelta);
+        return UpdateTargetPosition(inputDeps);
     }
-
-    #region 
-    private JobHandle MoveSchedule(JobHandle inputDeps, float fDelta)
-    {
-        // move
-        return
-            Entities.ForEach((ref Translation pTranslation, in Rotation pRotation, in C_Move cMove) =>
-            {
-                pTranslation.Value = pTranslation.Value + cMove.Speed * math.forward(pRotation.Value);
-            })
-            .Schedule(inputDeps);
-    }
-    /*private JobHandle UpdateTargetPosition(JobHandle inputDeps, float fDelta)
+    private JobHandle UpdateTargetPosition(JobHandle inputDeps)
     {
         NativeArray<Translation> tTargets = m_MechasQuery.ToComponentDataArray<Translation>(Allocator.TempJob);
-        var pJob = 
+        var pJob =
             Entities.ForEach((ref Translation pTranslation, in Rotation pRotation, in C_Move cMove) =>
             {
                 for (int i = 0; i < tTargets.Length; i++)
@@ -49,6 +35,5 @@ public class JS_Move : JobComponentSystem
             .Schedule(inputDeps);
         tTargets.Dispose();
         return pJob;
-    }*/
-    #endregion
-}
+    }
+}*/
