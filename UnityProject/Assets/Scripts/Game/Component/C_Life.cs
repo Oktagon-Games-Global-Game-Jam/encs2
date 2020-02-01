@@ -5,6 +5,6 @@ using UnityEngine;
 
 public struct C_Life : IComponentData
 {
-    public int fullLife;
-    public int actualLife;
+    public uint FullLife;
+    public uint ActualLife;
 }

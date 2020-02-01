@@ -8,6 +8,10 @@ public class S_Die : JobComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
     
+    protected override void OnCreate()
+    {
+        m_EndSimulationEntityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+    }
     public struct DieJob : IJobForEachWithEntity<T_IsDead>
     {
         public EntityCommandBuffer eEntityCommandBuffer;
