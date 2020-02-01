@@ -18,12 +18,12 @@ public class S_CheckIfIsDead : JobComponentSystem
 
     public struct CheckLifeJob : IJobForEachWithEntity<C_Life>
     {
-        [ReadOnly]public EntityCommandBuffer EntityCommandBuffer;
+        public EntityCommandBuffer.Concurrent EntityCommandBuffer;
         public void Execute(Entity entity, int index, [ReadOnly]ref C_Life c_Life)
         {
             if (c_Life.ActualLife <= 0)
             {
-                EntityCommandBuffer.AddComponent(entity, new T_IsDead());
+                EntityCommandBuffer.AddComponent(index, entity, new T_IsDead());
             }
         }
     }
@@ -32,7 +32,7 @@ public class S_CheckIfIsDead : JobComponentSystem
         
         JobHandle jobHandle = new CheckLifeJob
         {
-            EntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer()
+            EntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent()
         }.Schedule(m_GetAliveEntitiesNotDeadQuery, inputDeps);
         jobHandle.Complete();
         return jobHandle;
