@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
-    [SerializeField] private bool bIsEnemy;
     [Header("Move")]
     public float m_MoveSpeed = .1f;
     [Header("Reach Taret")]

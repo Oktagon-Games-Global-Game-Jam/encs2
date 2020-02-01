@@ -560,7 +560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &848386560
 Transform:
   m_ObjectHideFlags: 0
@@ -674,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &961251555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ MonoBehaviour:
   bIsEnemy: 0
   m_MoveSpeed: 0.1
   TargetPosition: {x: 0, y: 0, z: 0}
-  ReachDistance: 0
+  ReachDistance: 1
   MechaPart: 2
   MaxLife: 1
   ActualLife: 1
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f80da92b80a12e48b04dcd64bcaf29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpawnEnemyCooldown: 1
+  m_LevelData: {fileID: 0}
 --- !u!4 &1530420272
 Transform:
   m_ObjectHideFlags: 0
