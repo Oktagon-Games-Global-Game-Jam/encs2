@@ -4,9 +4,8 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-
-public struct C_SyncPositionMono : IComponentData
+public class C_InputData : IComponentData
 {
-    public float3 Position;
-    public int Id;
+    public float2 DeltaMove;
+    
 }
