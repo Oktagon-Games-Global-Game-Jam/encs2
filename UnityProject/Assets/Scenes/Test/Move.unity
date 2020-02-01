@@ -251,6 +251,7 @@ MonoBehaviour:
     y: 0
     z: 0.4
   ReachDistance: 1
+  MechaPart: 0
 --- !u!114 &961251556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +435,7 @@ GameObject:
   - component: {fileID: 1723292323}
   - component: {fileID: 1723292321}
   - component: {fileID: 1723292322}
+  - component: {fileID: 1723292326}
   m_Layer: 0
   m_Name: target
   m_TagString: Untagged
@@ -453,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.01
+  Speed: -0.01
 --- !u!114 &1723292322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,3 +530,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 93.581, z: 0}
+--- !u!114 &1723292326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723292320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MechaPart: 0

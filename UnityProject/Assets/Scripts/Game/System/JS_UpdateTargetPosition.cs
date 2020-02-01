@@ -7,14 +7,14 @@ using Unity.Mathematics;
 using UnityEngine;
 using Unity.Entities.UniversalDelegates;
 using Unity.Mathematics;
-/*
+
 class JS_UpdateTargetPosition : JobComponentSystem
 {
     EntityQuery m_MechasQuery;
     protected override void OnCreate()
     {
         base.OnCreate();
-        m_MechasQuery = GetEntityQuery(new ComponentType[] { typeof(T_Target), typeof(Translation) });
+        m_MechasQuery = GetEntityQuery(new ComponentType[] { typeof(C_MechaPart), typeof(Translation) });
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
@@ -23,17 +23,27 @@ class JS_UpdateTargetPosition : JobComponentSystem
     }
     private JobHandle UpdateTargetPosition(JobHandle inputDeps)
     {
-        NativeArray<Translation> tTargets = m_MechasQuery.ToComponentDataArray<Translation>(Allocator.TempJob);
+        var naMechaTranslation = m_MechasQuery.ToComponentDataArray<Translation>(Allocator.TempJob);
+        var naMechaPart = m_MechasQuery.ToComponentDataArray<C_MechaPart>(Allocator.TempJob);
+        
+        NativeArray<Entity> tTargets = m_MechasQuery.ToEntityArray(Allocator.TempJob);// ToComponentDataArray<Entity>(Allocator.TempJob);
         var pJob =
-            Entities.ForEach((ref Translation pTranslation, in Rotation pRotation, in C_Move cMove) =>
+            Entities.ForEach((ref C_ReachTarget pTarget) =>
             {
-                for (int i = 0; i < tTargets.Length; i++)
+                for (int i = 0; i < naMechaPart.Length ; i++)
                 {
-                    pTranslation.Value = pTranslation.Value + cMove.Speed * math.forward(pRotation.Value);
+                    if(pTarget.MechaPart == naMechaPart[i].MechaPart)
+                    {
+                        pTarget.TargetPosition = naMechaTranslation[i].Value;
+                        break;
+                    }
                 }
             })
             .Schedule(inputDeps);
-        tTargets.Dispose();
-        return pJob;
+        var pJobHandle1 = tTargets.Dispose(pJob);
+        var pJobHandle2 = naMechaTranslation.Dispose(pJob);
+        var pJobHandle3 = naMechaPart.Dispose(pJob);
+        return JobHandle.CombineDependencies(pJobHandle1, pJobHandle2, pJobHandle3);
+        //return pJob;
     }
-}*/
+}
