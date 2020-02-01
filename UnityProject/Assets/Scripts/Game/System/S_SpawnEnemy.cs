@@ -31,22 +31,26 @@ public class S_SpawnEnemy : JobComponentSystem
         float EnemyPositionX = m_GameData.m_LevelData.m_EnemySpawnPointX;
         float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
    
-        EntityCommandBuffer.Concurrent tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
+        EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
  
         int tRandomCount = 0;
-        JobHandle tJobHandle = Entities.ForEach(
-            (int entityInQueryIndex, Entity entity, ref C_SpawnData spawnData, ref Prefab prefab) =>
+        Entities.ForEach(
+            (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab) =>
             {
                 spawnData.TimeCache += tTime;
                 if (spawnData.TimeCache > spawnData.Cooldown)
                 {
                     for (int i = 0; i < spawnData.SpawnAmount; i++)
                     {
-                        Entity tSpawnEntity = tCommandBuffer.CreateEntity(entityInQueryIndex);
-                        tCommandBuffer.AddComponent(entityInQueryIndex, tSpawnEntity, typeof(C_SpawnRequest));
-                        tCommandBuffer.SetComponent(entityInQueryIndex, tSpawnEntity, new C_SpawnRequest
+                        Entity tSpawnEntity = tCommandBuffer.CreateEntity();
+                        tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
+
+                        float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
+                        float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
+                        
+                        tCommandBuffer.SetComponent( tSpawnEntity, new C_SpawnRequest
                         {
-                            Position = new float3(spawnData.IsEnemy? EnemyPositionX : PlayerPositionX, (int) spawnData.MechaLane, -spawnData.SpawnAmount/2 + i),
+                            Position = new float3((spawnData.IsEnemy? EnemyPositionX : PlayerPositionX) + tX, (int) spawnData.MechaLane, tZ),
                             Direction = 1,
                             Reference = entity
                         });
@@ -58,8 +62,8 @@ public class S_SpawnEnemy : JobComponentSystem
               
             })
             .WithoutBurst()
-            .Schedule(inputDeps);
-        tJobHandle.Complete();
-        return tJobHandle;
+            .Run();
+ 
+        return inputDeps;
     }
 }
