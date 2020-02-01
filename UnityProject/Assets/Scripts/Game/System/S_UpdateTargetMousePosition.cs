@@ -32,8 +32,8 @@ class S_UpdateTargetMousePosition : JobComponentSystem
                     }
                 })
                 .Schedule(inputDeps);
-
-        tInputData.Dispose(pJob);
+        pJob.Complete();
+        tInputData.Dispose();
         return pJob;
     }
 

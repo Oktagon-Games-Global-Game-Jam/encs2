@@ -53,8 +53,8 @@ public class S_ModifyLifeValueMecha : JobComponentSystem
             mechaEntities = mechas,
             mechaParts = mechaParts
         }.Schedule(this, inputDeps);
-        mechas.Dispose();
-        mechaParts.Dispose();
-        return jobHandle; 
+        ;
+       
+        return  JobHandle.CombineDependencies(mechaParts.Dispose(jobHandle), mechas.Dispose(jobHandle)); 
     }
 }
