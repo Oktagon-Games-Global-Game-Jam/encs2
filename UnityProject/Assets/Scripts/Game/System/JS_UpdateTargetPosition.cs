@@ -28,7 +28,7 @@ class JS_UpdateTargetPosition : JobComponentSystem
         
         NativeArray<Entity> tTargets = m_MechasQuery.ToEntityArray(Allocator.TempJob);// ToComponentDataArray<Entity>(Allocator.TempJob);
         var pJob =
-            Entities.ForEach((ref C_ReachTarget pTarget, ref C_MechaPart pMechaPart) =>
+            Entities.ForEach((ref C_ReachTarget pTarget, in C_MechaPart pMechaPart) =>
             {
                 for (int i = 0; i < naMechaPart.Length ; i++)
                 {
