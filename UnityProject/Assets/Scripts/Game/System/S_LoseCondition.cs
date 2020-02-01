@@ -2,7 +2,7 @@
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-/*[UpdateBefore(typeof(S_Die))]
+[UpdateBefore(typeof(S_Die))]
 public class S_LoseCondition : JobComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
@@ -28,4 +28,4 @@ public class S_LoseCondition : JobComponentSystem
         jobHandle.Complete();
         return jobHandle;
     }
-}*/
+}
