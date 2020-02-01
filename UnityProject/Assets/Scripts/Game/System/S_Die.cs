@@ -11,16 +11,19 @@ public class S_Die : JobComponentSystem
     }
     public struct DieJob : IJobForEachWithEntity<T_IsDead>
     {
-        [ReadOnly]public EntityCommandBuffer eEntityCommandBuffer;
+        public EntityCommandBuffer.Concurrent eEntityCommandBuffer;
         public void Execute(Entity entity, int index, [ReadOnly]ref T_IsDead tIsDead)
         {
             
-            eEntityCommandBuffer.DestroyEntity(entity);
+            eEntityCommandBuffer.DestroyEntity(index, entity);
         }
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        JobHandle jobHandle = new DieJob{eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer()}.Schedule(this, inputDeps);
+        JobHandle jobHandle = new DieJob
+        {
+            eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent()
+        }.Schedule(this, inputDeps);
         jobHandle.Complete();
         return jobHandle;
     }
