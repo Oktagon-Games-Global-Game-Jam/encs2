@@ -7,8 +7,12 @@ public struct C_Move : IComponentData
     public float Speed;
 }
 
-public struct C_ReachTarget : IComponentData
+
+public struct C_TargetReached : IComponentData
 {
-    public Entity Target;
-    public float ReachDistance;
+
 }
+
+public struct T_Target: IComponentData { }
+
+
