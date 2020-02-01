@@ -18,7 +18,7 @@ public class S_TakeDamage : JobComponentSystem
         [ReadOnly]public EntityCommandBuffer eEntityCommandBuffer;
         public void Execute(Entity entity, int index, ref C_Life cLife, [ReadOnly]ref C_DamageToTake cDamageToTake)
         {
-            cLife.ActualLife = math.min(0, cLife.ActualLife - cDamageToTake.DamageToTake);
+            cLife.ActualLife = math.min(uint.MinValue, cLife.ActualLife - cDamageToTake.DamageToTake);
             if (cLife.ActualLife == 0)
             {
                 eEntityCommandBuffer.AddComponent(entity, new T_IsDead());
