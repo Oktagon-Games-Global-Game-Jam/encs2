@@ -3,5 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public struct T_AllyUnit : IComponentData
-{ }
+public struct C_ModifyLife : IComponentData
+{
+    public int modifyValue;
+}

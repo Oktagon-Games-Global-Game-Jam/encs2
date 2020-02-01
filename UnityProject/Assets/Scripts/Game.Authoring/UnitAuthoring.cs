@@ -13,8 +13,9 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public float ReachDistance;
     public E_MechaPart MechaPart;
     [Header("Life")]
-    public uint MaxLife;
-    public uint ActualLife;
+    public int MaxLife;
+    public int ActualLife;
+    public int modifyLifeValue;
 
 
     public virtual void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -24,11 +25,6 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData(entity, new C_MechaPart() { MechaPart = MechaPart});
         dstManager.AddComponentData(entity, new C_Life() { MaxLife = MaxLife, ActualLife = ActualLife });
         dstManager.AddComponentData(entity, new Prefab());
-
-        if (bIsEnemy)
-        {
-            dstManager.AddComponentData(entity, new T_EnemyUnit());
-        }else
-            dstManager.AddComponentData(entity, new T_AllyUnit());
+        dstManager.AddComponentData(entity, new C_Unit{ModifyLifeValue = modifyLifeValue});
     }
 }

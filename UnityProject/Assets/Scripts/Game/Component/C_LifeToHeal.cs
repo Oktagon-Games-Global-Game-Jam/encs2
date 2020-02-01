@@ -5,5 +5,5 @@ using UnityEngine;
 
 public struct C_LifeToHeal : IComponentData
 {
-    public uint LifeToHeal;
+    public int LifeToHeal;
 }

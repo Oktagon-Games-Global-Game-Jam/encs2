@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using UnityEngine;
+using Unity.Mathematics;
 
-public class S_DealDamageToMecha : JobComponentSystem
+public class S_ModifyLifeValueMecha : JobComponentSystem
 {
     
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
@@ -18,20 +15,28 @@ public class S_DealDamageToMecha : JobComponentSystem
         m_GetMechaParts = GetEntityQuery(typeof(T_Mecha), ComponentType.ReadOnly<C_MechaPart>());
     }
 
-    public struct DealDamageToMechaJob : IJobForEachWithEntity<C_DamageMecha, C_MechaPart>
+    public struct DealDamageToMechaJob : IJobForEachWithEntity<C_ModifyLife, C_MechaPart>
     {
         public EntityCommandBuffer.Concurrent eConcurrent;
         public NativeArray<Entity> mechaEntities;
         public NativeArray<C_MechaPart> mechaParts;
 
-        public void Execute(Entity entity, int index, [ReadOnly]ref C_DamageMecha cDamageMecha, [ReadOnly]ref C_MechaPart cMechaPart)
+        public void Execute(Entity entity, int index, [ReadOnly]ref C_ModifyLife cModifyLife, [ReadOnly]ref C_MechaPart cMechaPart)
         {
             for (int i = 0; i < mechaParts.Length; i++)
             {
                 if (mechaParts[i].MechaPart == cMechaPart.MechaPart)
                 {
-                    eConcurrent.AddComponent(index, mechaEntities[i], new C_DamageToTake{DamageToTake = cDamageMecha.DamageToDeal});
-                    eConcurrent.DestroyEntity(index,entity);
+                    if (cModifyLife.modifyValue < 0) // deal damage
+                    {
+                        eConcurrent.AddComponent(index, mechaEntities[i], new C_DamageToTake{DamageToTake = cModifyLife.modifyValue*-1});
+                        eConcurrent.DestroyEntity(index,entity);
+                    }
+                    else //heal
+                    {
+                        eConcurrent.AddComponent(index, mechaEntities[i], new C_LifeToHeal(){LifeToHeal = cModifyLife.modifyValue});
+                        eConcurrent.DestroyEntity(index,entity);
+                    }
                     break;
                 }
             }
