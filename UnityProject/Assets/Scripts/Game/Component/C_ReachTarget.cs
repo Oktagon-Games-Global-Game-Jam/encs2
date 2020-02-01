@@ -18,7 +18,8 @@ public enum E_TargetType
 
 public enum E_MechaPart
 {
-    Head = 0,
+    Legs = 0,
     Body,
-    Legs,
+    Head,
+   
 }
