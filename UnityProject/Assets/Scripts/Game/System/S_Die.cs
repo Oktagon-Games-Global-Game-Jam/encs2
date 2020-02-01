@@ -1,7 +1,6 @@
 ﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-
 public class S_Die : JobComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
@@ -15,6 +14,7 @@ public class S_Die : JobComponentSystem
         [ReadOnly]public EntityCommandBuffer eEntityCommandBuffer;
         public void Execute(Entity entity, int index, [ReadOnly]ref T_IsDead tIsDead)
         {
+            
             eEntityCommandBuffer.DestroyEntity(entity);
         }
     }
