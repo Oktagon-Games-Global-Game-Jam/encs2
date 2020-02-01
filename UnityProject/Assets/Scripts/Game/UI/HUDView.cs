@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HUDView : MonoBehaviour
 {
-    
+
     //[Serializable]
     //public class SpawnButton
     //{
@@ -15,15 +15,24 @@ public class HUDView : MonoBehaviour
     //    public Button m_Button;
     //}
 
+    [Header("Kill Count")]
+    [SerializeField] Animator m_KillCountController;
     [SerializeField] private Text m_TextKillCount;
+    [Header("Spawn Buttons")]
     [SerializeField] private SpawnButton m_ButtonSpawnTemplate;
     [SerializeField] private SpawnButton[] m_Buttons;
+
 
     public void Setup()
     {
 
     }
-
+#if UNITY_EDITOR
+    public void ScoreTest()
+    {
+        m_KillCountController.SetTrigger("OnScore");
+    }
+#endif
 
     #region core methods
     public void SetKillAmount(int iAmount)
