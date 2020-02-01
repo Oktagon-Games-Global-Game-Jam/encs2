@@ -18,7 +18,7 @@ public class S_CheckIfIsDead : JobComponentSystem
 
     public struct CheckLifeJob : IJobForEachWithEntity<C_Life>
     {
-        public EntityCommandBuffer EntityCommandBuffer;
+        [ReadOnly]public EntityCommandBuffer EntityCommandBuffer;
         public void Execute(Entity entity, int index, [ReadOnly]ref C_Life c_Life)
         {
             if (c_Life.ActualLife <= 0)
