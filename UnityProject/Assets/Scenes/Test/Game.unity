@@ -251,6 +251,8 @@ GameObject:
   m_Component:
   - component: {fileID: 949691367}
   - component: {fileID: 949691368}
+  - component: {fileID: 949691369}
+  - component: {fileID: 949691370}
   m_Layer: 0
   m_Name: AuthoringSyncPosition
   m_TagString: Untagged
@@ -285,6 +287,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ReferenceTransform: {fileID: 1017242749}
+--- !u!114 &949691369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949691366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5793a63c75d4434d9faceabfec257f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &949691370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949691366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b6b9666195cd844b8ac713b83ffb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetPosition:
+    x: 0
+    y: 0
+    z: 0
+  ReachDistance: 0
+  MechaPart: 0
 --- !u!1 &1017242746
 GameObject:
   m_ObjectHideFlags: 0

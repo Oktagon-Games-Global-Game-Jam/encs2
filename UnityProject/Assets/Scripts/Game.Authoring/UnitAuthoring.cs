@@ -19,7 +19,8 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public virtual void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         dstManager.AddComponentData(entity, new C_Move() { Speed = m_MoveSpeed });
-        dstManager.AddComponentData(entity, new C_ReachTarget() { MechaPart = MechaPart, ReachDistance = ReachDistance, TargetPosition = TargetPosition });
+        dstManager.AddComponentData(entity, new C_ReachTarget() { ReachDistance = ReachDistance, TargetPosition = TargetPosition });
+        dstManager.AddComponentData(entity, new C_MechaPart() { MechaPart = MechaPart});
         dstManager.AddComponentData(entity, new C_Life() { MaxLife = MaxLife, ActualLife = ActualLife });
         dstManager.AddComponentData(entity, new Prefab());
     }
