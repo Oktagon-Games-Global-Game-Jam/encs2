@@ -34,6 +34,7 @@ public class S_CheckIfIsDead : JobComponentSystem
         {
             EntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer()
         }.Schedule(m_GetAliveEntitiesNotDeadQuery, inputDeps);
+        jobHandle.Complete();
         return jobHandle;
     }
 }
