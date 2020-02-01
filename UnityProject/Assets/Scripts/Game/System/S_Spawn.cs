@@ -23,35 +23,43 @@ public class S_Spawn : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        
+        NativeArray<Entity> tEntities = m_Query.ToEntityArray(Allocator.TempJob);
         J_SpawnJob tSpawnJob = new J_SpawnJob
         {
-            CommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer(),
-            SpawnRequestChunk = GetArchetypeChunkComponentType<C_SpawnRequest>()
+            CommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),
+            SpawnRequestChunk = GetArchetypeChunkComponentType<C_SpawnRequest>(),
+            tEntities = tEntities
         };
+        
+        JobHandle tHandle = tSpawnJob.Schedule(m_Query, inputDeps);
+        tHandle.Complete();
 
-        return tSpawnJob.Schedule(m_Query, inputDeps);
+        tEntities.Dispose();
+        
+        return tHandle;
     }
 
     public struct J_SpawnJob : IJobChunk
     {
         public ArchetypeChunkComponentType<C_SpawnRequest> SpawnRequestChunk;
-        public EntityCommandBuffer CommandBuffer;
+        public EntityCommandBuffer.Concurrent CommandBuffer;
+        public NativeArray<Entity> tEntities;
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
             NativeArray<C_SpawnRequest> tSpawnRequestArray = chunk.GetNativeArray(SpawnRequestChunk);
             for (int i = 0; i < chunk.Count; i++)
             {
-                Entity tSpawnedEntity = CommandBuffer.Instantiate(tSpawnRequestArray[i].Reference);
+                Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
                 
-                CommandBuffer.SetComponent(tSpawnedEntity, new Translation
+                CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new Translation
                 {
                     Value = tSpawnRequestArray[i].Position
                 });
-                CommandBuffer.SetComponent(tSpawnedEntity, new RotationEulerXYZ
-                {
-                    Value = new float3(0, 90 * tSpawnRequestArray[i].Direction, 0)
-                });
+                CommandBuffer.DestroyEntity(firstEntityIndex, tEntities[firstEntityIndex + i]);
+                // CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new RotationEulerXYZ
+                // {
+                //     Value = new float3(0, 90 * tSpawnRequestArray[i].Direction, 0)
+                // });
             }
         }
     }
