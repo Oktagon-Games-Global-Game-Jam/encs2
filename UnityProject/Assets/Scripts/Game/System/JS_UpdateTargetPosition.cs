@@ -28,11 +28,11 @@ class JS_UpdateTargetPosition : JobComponentSystem
         
         NativeArray<Entity> tTargets = m_MechasQuery.ToEntityArray(Allocator.TempJob);// ToComponentDataArray<Entity>(Allocator.TempJob);
         var pJob =
-            Entities.ForEach((ref C_ReachTarget pTarget) =>
+            Entities.ForEach((ref C_ReachTarget pTarget, ref C_MechaPart pMechaPart) =>
             {
                 for (int i = 0; i < naMechaPart.Length ; i++)
                 {
-                    if(pTarget.MechaPart == naMechaPart[i].MechaPart)
+                    if( pMechaPart.MechaPart == naMechaPart[i].MechaPart)
                     {
                         pTarget.TargetPosition = naMechaTranslation[i].Value;
                         break;
