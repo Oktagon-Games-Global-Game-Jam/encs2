@@ -5,6 +5,6 @@ using UnityEngine;
 
 public struct C_DamageToTake : IComponentData
 {
-    public uint DamageToTake;
+    public int DamageToTake;
 
 }

@@ -5,12 +5,13 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 [UpdateBefore(typeof(S_Spawn))]
 public class S_SpawnEnemy : JobComponentSystem
 {
     private GameData m_GameData;
-    private float m_Time = 0;
-    
+  
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
     protected override void OnCreate()
     {
@@ -26,30 +27,43 @@ public class S_SpawnEnemy : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        m_Time += Time.DeltaTime;
-        
-        if (m_Time < m_GameData.m_SpawnEnemyCooldown)
-            return inputDeps;
-        
-        m_Time = 0;
-        EntityCommandBuffer.Concurrent tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
-        JobHandle tJobHandle = Entities.ForEach(
-            (int entityInQueryIndex, Entity entity, ref C_Move move, ref Prefab prefab) =>
+        float tTime = Time.DeltaTime;
+        float EnemyPositionX = m_GameData.m_LevelData.m_EnemySpawnPointX;
+        float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
+   
+        EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
+ 
+        int tRandomCount = 0;
+        Entities.ForEach(
+            (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab) =>
             {
-
-                Entity tSpawnEntity = tCommandBuffer.CreateEntity(entityInQueryIndex);
-                tCommandBuffer.AddComponent(entityInQueryIndex, tSpawnEntity, typeof(C_SpawnRequest));
-                tCommandBuffer.SetComponent(entityInQueryIndex, tSpawnEntity, new C_SpawnRequest
+                spawnData.TimeCache += tTime;
+                if (spawnData.TimeCache > spawnData.Cooldown)
                 {
-                    Position = float3.zero,
-                    Direction = 1,
-                    Reference = entity
-                });
+                    for (int i = 0; i < spawnData.SpawnAmount; i++)
+                    {
+                        Entity tSpawnEntity = tCommandBuffer.CreateEntity();
+                        tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
+
+                        float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
+                        float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
+                        
+                        tCommandBuffer.SetComponent( tSpawnEntity, new C_SpawnRequest
+                        {
+                            Position = new float3((spawnData.IsEnemy? EnemyPositionX : PlayerPositionX) + tX, (int) spawnData.MechaLane, tZ),
+                            Direction = 1,
+                            Reference = entity
+                        });
+                        
+                    }
+                    spawnData.TimeCache = 0;
+                }
                 
+              
             })
             .WithoutBurst()
-            .Schedule(inputDeps);
-        tJobHandle.Complete();
-        return tJobHandle;
+            .Run();
+ 
+        return inputDeps;
     }
 }

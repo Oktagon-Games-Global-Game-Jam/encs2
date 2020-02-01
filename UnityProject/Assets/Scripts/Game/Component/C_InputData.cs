@@ -4,8 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class C_InputData : IComponentData
+public struct C_InputData : IComponentData
 {
     public float2 DeltaMove;
-    
 }
