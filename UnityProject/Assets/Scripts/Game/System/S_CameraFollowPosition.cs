@@ -26,13 +26,12 @@ public class S_CameraFollowPosition : JobComponentSystem
     {
 
         JobHandle tJobHandle = Entities.ForEach(
-                (ref Translation translation, ref C_SyncPositionMono syncPositionMono, in C_ReachTarget reachTarget,
+                (ref Translation translation, in C_ReachTarget reachTarget,
                     in T_Camera camera) =>
                 {
                     var tTranslation = math.lerp(translation.Value, reachTarget.TargetPosition, 0.5f);
                     tTranslation.z = translation.Value.z;
                     translation.Value = tTranslation;
-                    syncPositionMono.Position = tTranslation;
                 })
             .WithoutBurst()
             .Schedule(m_Query.GetDependency());
