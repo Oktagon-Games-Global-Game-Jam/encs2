@@ -13,7 +13,7 @@ public class JS_Rotate : JobComponentSystem
         float time = Time.DeltaTime;
         return
         Entities
-            .ForEach((ref Rotation pRot, in C_Resource pResource, in C_Rotate pRotate) =>
+            .ForEach((ref Rotation pRot, in C_Rotate pRotate) =>
             {
                 pRot.Value = math.mul(pRot.Value, quaternion.RotateZ(math.radians(pRotate.Speed * time)));
             })
