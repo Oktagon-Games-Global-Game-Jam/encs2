@@ -20,6 +20,12 @@ public class S_EndGame : ComponentSystem
     
     protected override void OnUpdate()
     {
+        Entities.ForEach((Entity entity, ref C_Move move) =>
+        {
+            EntityManager.RemoveComponent(entity, typeof(C_Move));
+        });
+        
+
         Entities.ForEach((Entity entity, ref C_EndGame tGameWon) =>
         {
             if (tGameWon.IsMechaWinner)
@@ -27,6 +33,11 @@ public class S_EndGame : ComponentSystem
                 UnityEngine.SceneManagement.SceneManager.LoadScene(k.Scenes.UI_Victory,
                     UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 Debug.Log("GameWon");
+                
+                Entities.ForEach((Entity pEntity, ref C_SyncAnimationMono Sync) =>
+                {
+                    Sync.State = E_State.Win; 
+                });
             }
             else
             {

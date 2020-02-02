@@ -10,5 +10,6 @@ public struct C_SyncAnimationMono : IComponentData
 public enum E_State
 {
     Walking,
-    Attacking
+    Attacking,
+    Win
 }
