@@ -15,6 +15,11 @@ public class ECSComponentMono <T> where T : Object
             AddObject(pComponents[i].GetInstanceID(), pComponents[i]);            
         }
     }
+
+    public ECSComponentMono()
+    {
+        m_Objects = new Dictionary<int, T>();
+    }
     public void AddObject(int pId, T pMonoObject)
     {
         if (m_Objects.ContainsKey(pId))

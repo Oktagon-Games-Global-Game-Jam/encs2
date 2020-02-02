@@ -5,21 +5,22 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ECSSliderSync : JobComponentSystem
+public class ECSCountUnitUISync : JobComponentSystem
 {
-    public ECSComponentMono<Slider> m_Sliders;
+    public ECSComponentMono<HUDView> m_HudView;
     
     protected override void OnStartRunning()
     {
         base.OnStartRunning();
-        m_Sliders = new ECSComponentMono<Slider>();    
+        m_HudView = new ECSComponentMono<HUDView>(Object.FindObjectsOfType<HUDView>());    
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        Entities.ForEach((in C_SyncSlider pSync) =>
+        Entities.ForEach((in C_SyncCountUnitUI pSync) =>
             {
-                m_Sliders.GetObject(pSync.Id).value = pSync.Value;
+                m_HudView.GetObject(pSync.Id).SetEnemyUnitAmount(pSync.EnemyCount);
+                m_HudView.GetObject(pSync.Id).SetPlayerUnitAmount(pSync.PlayerCount);
             })
             .WithoutBurst()
             .Run();
