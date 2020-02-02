@@ -21,8 +21,8 @@ class S_UpdateTargetMousePosition : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var tInputData = m_InputsQuery.ToComponentDataArray<C_InputData>(Allocator.TempJob);
-        float tLeftBorder = m_GameData.m_LevelData.m_PlayerSpawnPointX;
-        float tRightBorder = m_GameData.m_LevelData.m_EnemySpawnPointX;
+        float tLeftBorder = m_GameData == null ? 0 : m_GameData.m_LevelData.m_PlayerSpawnPointX;
+        float tRightBorder = m_GameData == null ? 0 : m_GameData.m_LevelData.m_EnemySpawnPointX;
         var pJob =
             Entities.ForEach((ref C_ReachTarget pTarget, ref T_CameraFollowData pFollowData) =>
                 {

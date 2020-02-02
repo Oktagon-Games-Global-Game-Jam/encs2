@@ -66,4 +66,21 @@ public class S_SpawnEnemy : JobComponentSystem
  
         return inputDeps;
     }
+
+    /*
+    private void Spawn(EntityCommandBuffer tCommandBuffer, C_SpawnData spawnData)
+    {
+        Entity tSpawnEntity = tCommandBuffer.CreateEntity();
+        tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
+
+        float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
+        float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
+
+        tCommandBuffer.SetComponent(tSpawnEntity, new C_SpawnRequest
+        {
+            Position = new float3((spawnData.IsEnemy ? EnemyPositionX : PlayerPositionX) + tX, (int)spawnData.MechaLane, tZ),
+            Direction = 1,
+            Reference = entity
+        });
+    }*/
 }

@@ -22,26 +22,28 @@ public class HUDView : MonoBehaviour
     [SerializeField] private SpawnButton m_ButtonSpawnTemplate;
     [SerializeField] private SpawnButton[] m_Buttons;
 
+    private void OnDestroy()
+    {
+        for (int i = 0; i < m_Buttons.Length; i++)
+        {
+            m_Buttons[i].Setup(null, null);
+        }
+    }
 
     public void Setup()
     {
 
     }
-#if UNITY_EDITOR
-    public void ScoreTest()
-    {
-        m_KillCountController.SetTrigger("OnScore");
-    }
-#endif
 
     #region core methods
     public void SetKillAmount(int iAmount)
     {
         m_TextKillCount.text = iAmount.ToString();
+        m_KillCountController.SetTrigger("OnScore");
     }
-    public void SetOnClick(int iIdx, System.Action pOnClick)
+    public void SetOnClick(int iIdx, System.Action PointerDown, System.Action PointerUp)
     {
-        m_Buttons[iIdx].m_Button.onClick.AddListener(() => pOnClick());
+        m_Buttons[iIdx].Setup(PointerDown, PointerUp);
     }
     public void SetEnabled(int iIdx, bool bEnabled)
     {
