@@ -8,15 +8,16 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [UpdateBefore(typeof(S_Spawn))]
-public class S_SpawnEnemy : JobComponentSystem
+class JS_SpawnReparer : JobComponentSystem  
 {
     private GameData m_GameData;
-  
+    EntityQuery uiQuery;
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
     protected override void OnCreate()
     {
         base.OnCreate();
         m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+        uiQuery = GetEntityQuery(typeof(C_UISpawnUnitRequest));
     }
 
     protected override void OnStartRunning()
@@ -27,41 +28,43 @@ public class S_SpawnEnemy : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        float tTime = Time.DeltaTime;
-        float EnemyPositionX = m_GameData.m_LevelData.m_EnemySpawnPointX;
-        float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
-   
-        EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
- 
-        int tRandomCount = 0;
-        Entities.ForEach(
-            (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab, in T_Enemy eEnemy) =>
-            {
-                spawnData.TimeCache += tTime;
-                if (spawnData.TimeCache > spawnData.Cooldown)
+        var naMechaTranslation = uiQuery.ToComponentDataArray<C_UISpawnUnitRequest>(Allocator.TempJob);
+        if (naMechaTranslation.Length > 0)
+        {
+            float tTime = Time.DeltaTime;
+            float EnemyPositionX = m_GameData.m_LevelData.m_EnemySpawnPointX;
+            float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
+            EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
+            int tRandomCount = 0;
+            Entities.ForEach(
+                (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab, in T_Ally pAlly) =>
                 {
-                    for (int i = 0; i < spawnData.SpawnAmount; i++)
+                    //spawnData.TimeCache += tTime;
+                    //if (spawnData.TimeCache > spawnData.Cooldown)
                     {
-                        Entity tSpawnEntity = tCommandBuffer.CreateEntity();
-                        tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
-
-                        float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
-                        float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
-                        
-                        tCommandBuffer.SetComponent( tSpawnEntity, new C_SpawnRequest
+                        for (int i = 0; i < spawnData.SpawnAmount; i++)
                         {
-                            Position = new float3(EnemyPositionX + tX, (int) spawnData.MechaLane, tZ),
-                            Direction = 1,
-                            Reference = entity
-                        });
-                        
-                    }
-                    spawnData.TimeCache = 0;
-                }
-            })
-            .WithoutBurst()
-            .Run();
+                            Entity tSpawnEntity = tCommandBuffer.CreateEntity();
+                            tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
 
+                            float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
+                            float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
+
+                            tCommandBuffer.SetComponent(tSpawnEntity, new C_SpawnRequest
+                            {
+                                Position = new float3(PlayerPositionX + tX, (int)spawnData.MechaLane, tZ),
+                                Direction = 1,
+                                Reference = entity
+                            });
+
+                        }
+                        spawnData.TimeCache = 0;
+                    }
+                })
+                .WithoutBurst()
+                .Run();
+        }
+        naMechaTranslation.Dispose();
         return inputDeps;
     }
 

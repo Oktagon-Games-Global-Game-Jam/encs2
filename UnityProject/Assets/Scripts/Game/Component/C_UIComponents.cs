@@ -3,7 +3,11 @@ using Unity.Mathematics;
 
 
 
-public struct SpawnUnitRequest : IComponentData
+public struct C_UISpawnUnitRequest : IComponentData
 {
     public E_MechaPart MechaPart;
 }
+//public struct C_UISpawnStopUnitRequest : IComponentData
+//{
+//    public E_MechaPart MechaPart;
+//}

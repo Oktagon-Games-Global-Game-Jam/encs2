@@ -24,7 +24,7 @@ public class HUDController : MonoBehaviour
             return;
         var manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         Entity tEntity = manager.CreateEntity();
-        manager.AddComponentData(tEntity, new SpawnUnitRequest() { MechaPart = ePart });
+        manager.AddComponentData(tEntity, new C_UISpawnUnitRequest() { MechaPart = ePart });
 
         // store it
         m_SpawnEntities.Add(ePart, tEntity);
