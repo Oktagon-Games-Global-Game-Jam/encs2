@@ -18,8 +18,8 @@ public class HUDView : MonoBehaviour
     [Header("Kill Count")]
     [SerializeField] Animator m_KillCountController;
     [SerializeField] private Text m_TextKillCount;
-    [SerializeField] private Text m_TextAlliesCount;
-    [SerializeField] private Text m_TextEnemiesCount;
+    [SerializeField] private Text m_TextUnitPlayerCount;
+    [SerializeField] private Text m_TextUnitEnemyCount;
     [Header("Spawn Buttons")]
     [SerializeField] private SpawnButton m_ButtonSpawnTemplate;
     [SerializeField] private SpawnButton[] m_Buttons;
@@ -38,15 +38,18 @@ public class HUDView : MonoBehaviour
     }
 
     #region core methods
-    public void SetUnitsAmount(int iAlliesAmount, int iEnemiesAmount)
-    {
-        m_TextAlliesCount.text = iAlliesAmount.ToString();
-        m_TextEnemiesCount.text = iEnemiesAmount.ToString();
-    }
     public void SetKillAmount(int iAmount)
     {
         m_TextKillCount.text = iAmount.ToString();
         m_KillCountController.SetTrigger("OnScore");
+    }
+    public void SetPlayerUnitAmount(int iAmount)
+    {
+        m_TextUnitPlayerCount.text = iAmount.ToString();
+    }
+    public void SetEnemyUnitAmount(int iAmount)
+    {
+        m_TextUnitEnemyCount.text = iAmount.ToString();
     }
     public void SetOnClick(int iIdx, System.Action PointerDown, System.Action PointerUp)
     {

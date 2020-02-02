@@ -21,7 +21,7 @@ public class S_TakeDamage : JobComponentSystem
         public EntityCommandBuffer.Concurrent eEntityCommandBuffer;
         public void Execute(Entity entity, int index, ref C_Life cLife, [ReadOnly]ref C_DamageToTake cDamageToTake)
         {
-            cLife.ActualLife = math.min(0, cLife.ActualLife - cDamageToTake.DamageToTake);
+            cLife.ActualLife = math.max(0, cLife.ActualLife - cDamageToTake.DamageToTake);
             eEntityCommandBuffer.RemoveComponent<C_DamageToTake>(index, entity);
         }
     }

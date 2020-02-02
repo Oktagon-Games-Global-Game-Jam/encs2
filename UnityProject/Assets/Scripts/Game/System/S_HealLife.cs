@@ -19,7 +19,7 @@ public class S_HealLife : JobComponentSystem
         public EntityCommandBuffer.Concurrent eEntityCommandBuffer;
         public void Execute(Entity entity, int index, ref C_Life cLife, [ReadOnly]ref C_LifeToHeal cLifeToHeal)
         {
-            cLife.ActualLife = math.max(cLife.ActualLife + cLifeToHeal.LifeToHeal, cLife.MaxLife);
+            cLife.ActualLife = math.min(cLife.ActualLife + cLifeToHeal.LifeToHeal, cLife.MaxLife);
             eEntityCommandBuffer.RemoveComponent<C_LifeToHeal>(index, entity);
         }
     }
