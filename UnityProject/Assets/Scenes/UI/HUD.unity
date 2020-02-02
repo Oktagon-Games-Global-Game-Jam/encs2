@@ -509,8 +509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 0, y: 69.899994}
+  m_AnchoredPosition: {x: 0, y: 22.54}
+  m_SizeDelta: {x: 0, y: 44.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198644776
 MonoBehaviour:
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198644774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -691,12 +691,12 @@ PrefabInstance:
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100.76
+      value: 61.57
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 69.85
+      value: 42.69
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
@@ -1605,12 +1605,12 @@ PrefabInstance:
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100.76
+      value: 61.57
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 69.85
+      value: 42.69
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
@@ -1730,12 +1730,12 @@ PrefabInstance:
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100.76
+      value: 61.79
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 69.85
+      value: 42.83
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
