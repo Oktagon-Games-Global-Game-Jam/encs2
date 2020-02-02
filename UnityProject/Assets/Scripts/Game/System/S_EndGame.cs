@@ -44,6 +44,10 @@ public class S_EndGame : ComponentSystem
                 UnityEngine.SceneManagement.SceneManager.LoadScene(k.Scenes.UI_Defeat,
                     UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 Debug.Log("GameLost");
+                Entities.ForEach((Entity pEntity, ref C_SyncAnimationMono Sync) =>
+                {
+                    Sync.State = E_State.Defeat; 
+                });
             }
             EntityManager.DestroyEntity(entity);
         });
