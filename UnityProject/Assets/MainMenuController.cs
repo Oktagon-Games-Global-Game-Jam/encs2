@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class MainMenuController : MonoBehaviour
             soundImage.sprite = soundEnabledSprite;
     }
 
+    private ScrollView tscorl;
     public void ExitGame()
     {
         Application.Quit();
@@ -30,7 +32,6 @@ public class MainMenuController : MonoBehaviour
 
     public void StarGame()
     {
-        SceneManager.LoadSceneAsync("Scenes/Game",LoadSceneMode.Additive);
+        SceneManager.LoadScene("Scenes/Game");
     }
-
 }

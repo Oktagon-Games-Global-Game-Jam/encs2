@@ -20,11 +20,7 @@ class JS_SpawnReparer : JobComponentSystem
         uiQuery = GetEntityQuery(typeof(C_UISpawnUnitRequest));
     }
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        uiQuery.Dispose();
-    }
+
 
     protected override void OnStartRunning()
     {
