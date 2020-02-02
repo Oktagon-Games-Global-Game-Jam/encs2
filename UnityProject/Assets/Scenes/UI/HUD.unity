@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 4397815939403942412, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
@@ -1677,7 +1677,7 @@ PrefabInstance:
     - target: {fileID: 4397815939403942412, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_Name
-      value: Button (2)
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
@@ -1823,7 +1823,7 @@ PrefabInstance:
     - target: {fileID: 4397815939403942412, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}
       propertyPath: m_Name
-      value: Button
+      value: Leg
       objectReference: {fileID: 0}
     - target: {fileID: 4397815939403942413, guid: 9dd1774030ca11c4ebeb066c9b8a5ed6,
         type: 3}

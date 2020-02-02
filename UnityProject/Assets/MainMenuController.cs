@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,7 +30,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StarGame()
     {
-        SceneManager.LoadScene("Scenes/Game");
+        SceneManager.LoadSceneAsync("Scenes/Game",LoadSceneMode.Additive);
     }
 
 }

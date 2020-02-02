@@ -2399,12 +2399,12 @@ PrefabInstance:
     - target: {fileID: 7072444061582351952, guid: 910177ec26b76c14996c2d53627a6def,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7072444061582351952, guid: 910177ec26b76c14996c2d53627a6def,
         type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7072444061591351794, guid: 910177ec26b76c14996c2d53627a6def,
         type: 3}
