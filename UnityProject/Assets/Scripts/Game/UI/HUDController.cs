@@ -16,6 +16,8 @@ public class HUDController : MonoBehaviour
         m_HUDView.SetOnClick(0, () => StartSpawn(E_MechaPart.Legs), () => EndSpawn(E_MechaPart.Legs));
         m_HUDView.SetOnClick(1, () => StartSpawn(E_MechaPart.Body), () => EndSpawn(E_MechaPart.Body));
         m_HUDView.SetOnClick(2, () => StartSpawn(E_MechaPart.Head), () => EndSpawn(E_MechaPart.Head));
+        //AudioManager.Play(AudioManager.SoundList.MusicBattle, true);
+        //AudioManager.Stop(AudioManager.SoundList.MusicMenu);
     }
     private void Update()
     {
@@ -43,9 +45,9 @@ public class HUDController : MonoBehaviour
         Entity tEntity = manager.CreateEntity();
         manager.AddComponentData(tEntity, new C_UISpawnUnitRequest() { MechaPart = ePart });
 
-
         // store it
         m_SpawnEntities.Add(ePart, tEntity);
+
     }
     public void EndSpawn(E_MechaPart ePart)
     {
