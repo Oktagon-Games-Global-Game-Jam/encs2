@@ -1,5 +1,6 @@
 ﻿using Unity.Entities;
 
+[GenerateAuthoringComponent]
 public struct C_SyncAnimationMono : IComponentData
 {
     public int Id;
