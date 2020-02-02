@@ -49,7 +49,8 @@ class JS_CreateResourceOnDie : JobComponentSystem
                     pBuffer.AddSharedComponent(entityInQueryIndex, pEntity, new RenderMesh() { mesh = m_ResourceMesh.mesh, material = m_ResourceMesh.material });
                 })
             .Schedule(inputDeps);
-        //pTask.Complete();
+        
+        pTask.Complete();
         return pTask;
     }
 }
