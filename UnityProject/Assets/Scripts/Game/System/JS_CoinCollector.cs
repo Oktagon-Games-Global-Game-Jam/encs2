@@ -6,26 +6,35 @@ using Unity.Mathematics;
 using UnityEngine;
 using Unity.Rendering;
 
-/*
-class JS_CoinCollector : JobComponentSystem
+[UpdateAfter(typeof(S_Die))]
+class JS_CoinCollector : ComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    private float m_Cooldown;
+    private bool m_CollectingPhase;
 
     protected override void OnCreate()
     {
         base.OnCreate();
         m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
     }
-
-    protected override JobHandle OnUpdate(JobHandle inputDeps)
+    protected override void OnUpdate()
     {
-        EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
-        return 
+        float fTtime = Time.DeltaTime;
+        m_Cooldown -= fTtime;
+        if (m_Cooldown <= 0)
+        {
+            Unity.Mathematics.Random pRand = new Unity.Mathematics.Random(324);
+            m_Cooldown = 0f;
+            var tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
             Entities.ForEach(
-                (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab, in T_Ally pAlly) =>
+                (Entity entity, ref C_Resource pRes, ref C_Rotate pRotate) =>
                 {
-                    tCommandBuffer.DestroyEntity(entity);
-                })
-            .Schedule(inputDeps);
+                    pRotate.Speed *= 2f;
+                    EntityManager.AddComponentData(entity, new C_AnimateToResource() { Value = 0, Wait = pRand.NextFloat(0, 1f) });
+                    EntityManager.RemoveComponent(entity, typeof(C_Resource));
+                    })
+            ;
+        }
     }
-}*/
+}

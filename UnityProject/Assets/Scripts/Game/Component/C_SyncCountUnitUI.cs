@@ -10,4 +10,5 @@ public struct C_SyncCountUnitUI : IComponentData
     public int EnemyCount;
     public int PlayerCount;
     public int KillCount;
+    public int Resource;
 }

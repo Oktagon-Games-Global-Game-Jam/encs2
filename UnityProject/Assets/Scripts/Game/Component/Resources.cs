@@ -34,3 +34,9 @@ public struct C_Rotate : IComponentData
 {
     public float Speed;
 }
+
+public struct C_AnimateToResource : IComponentData
+{
+    public float Wait;
+    public int Value;
+}
