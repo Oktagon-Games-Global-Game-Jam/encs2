@@ -13,6 +13,8 @@ class JS_CreateResourceOnDie : JobComponentSystem
     static private SC_ResourceMesh m_ResourceMesh;
     private Rotation m_RotationTemplate;
     private Scale m_ScaleTemplate;
+    private EntityQuery m_KillQuery;
+
     protected override void OnStartRunning()
     {
         base.OnStartRunning();
@@ -28,6 +30,14 @@ class JS_CreateResourceOnDie : JobComponentSystem
     {
         base.OnCreate();
         m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+        m_KillQuery = GetEntityQuery(new ComponentType[]
+        {
+                    ComponentType.ReadOnly<C_Unit>(),
+                    ComponentType.ReadOnly<T_Enemy>(),
+                    ComponentType.ReadOnly<T_IsDead>(),
+        });
+
+        m_KillQuery.AddChangedVersionFilter(ComponentType.ReadOnly<T_IsDead>());
     }
 
 
@@ -37,7 +47,7 @@ class JS_CreateResourceOnDie : JobComponentSystem
         var pTask =
             Entities
             .WithoutBurst()
-            .ForEach((int entityInQueryIndex, in T_IsDead tIsDead, in Translation pTranslation) =>
+            .ForEach((int entityInQueryIndex, in T_IsDead tIsDead, in Translation pTranslation/*, in T_Enemy pEnemy*/) =>
                 {
                     var pEntity = pBuffer.CreateEntity(entityInQueryIndex);
                     pBuffer.AddComponent(entityInQueryIndex, pEntity, new Translation() { Value = pTranslation.Value });
@@ -48,8 +58,7 @@ class JS_CreateResourceOnDie : JobComponentSystem
                     pBuffer.AddComponent(entityInQueryIndex, pEntity, new C_Rotate() { Speed = 60f });
                     pBuffer.AddSharedComponent(entityInQueryIndex, pEntity, new RenderMesh() { mesh = m_ResourceMesh.mesh, material = m_ResourceMesh.material });
                 })
-            .Schedule(inputDeps);
-        
+            .Schedule(m_KillQuery.GetDependency());
         pTask.Complete();
         return pTask;
     }

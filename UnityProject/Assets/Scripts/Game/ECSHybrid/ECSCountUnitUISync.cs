@@ -21,6 +21,7 @@ public class ECSCountUnitUISync : ComponentSystem
             m_HudView.GetObject(pSync.Id).SetEnemyUnitAmount(pSync.EnemyCount);
             m_HudView.GetObject(pSync.Id).SetPlayerUnitAmount(pSync.PlayerCount);
             m_HudView.GetObject(pSync.Id).SetKillAmount(pSync.KillCount);
+            //m_HudView.GetObject(pSync.Id).SetAmount(0, )
         });
 
     }
