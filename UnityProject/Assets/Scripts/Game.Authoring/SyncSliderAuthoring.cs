@@ -9,6 +9,8 @@ public class SyncSliderAuthoring  : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField] private Slider m_Reference;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
+        if( World.AllWorlds[0].GetOrCreateSystem<ECSSliderSync>().m_Sliders == null)
+            World.AllWorlds[0].GetOrCreateSystem<ECSSliderSync>().m_Sliders = new ECSComponentMono<Slider>();
         World.AllWorlds[0].GetOrCreateSystem<ECSSliderSync>().m_Sliders.AddObject(m_Reference.GetInstanceID(), m_Reference);
         
         dstManager.AddComponent(entity, typeof(C_SyncSlider));
