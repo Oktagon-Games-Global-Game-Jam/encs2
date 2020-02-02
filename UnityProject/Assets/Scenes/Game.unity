@@ -919,13 +919,13 @@ MonoBehaviour:
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
-  MechaPart: 1
+  MechaPart: 2
   ActionDistance: 2.5
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 0.5
+  Cooldown: 2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -2948,7 +2948,7 @@ MonoBehaviour:
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 0.5
+  Cooldown: 2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -3268,7 +3268,7 @@ MonoBehaviour:
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 0.5
+  Cooldown: 2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -4069,13 +4069,13 @@ MonoBehaviour:
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
-  MechaPart: 1
+  MechaPart: 2
   ActionDistance: 2.5
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 0.5
+  Cooldown: 2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -4256,13 +4256,13 @@ MonoBehaviour:
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
-  MechaPart: 1
+  MechaPart: 2
   ActionDistance: 2.5
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 0.5
+  Cooldown: 2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
