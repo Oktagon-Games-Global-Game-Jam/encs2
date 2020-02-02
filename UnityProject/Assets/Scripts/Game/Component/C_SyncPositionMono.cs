@@ -10,3 +10,4 @@ public struct C_SyncPositionMono : IComponentData
     public float3 Position;
     public int Id;
 }
+
