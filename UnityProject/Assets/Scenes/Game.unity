@@ -1912,7 +1912,6 @@ GameObject:
   - component: {fileID: 342162394}
   - component: {fileID: 342162399}
   - component: {fileID: 342162398}
-  - component: {fileID: 342162397}
   - component: {fileID: 342162396}
   - component: {fileID: 342162395}
   m_Layer: 0
@@ -1945,10 +1944,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 342162393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
+  m_Script: {fileID: 11500000, guid: 844bedb3f6cad3a4b80fb62d6a302c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MechaPart: 0
+  m_MoveSpeed: 0.01
+  m_EMechaPart: 2
+  life: 100
 --- !u!114 &342162396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1962,19 +1963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &342162397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342162393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.1
 --- !u!23 &342162398
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5233,7 +5221,6 @@ GameObject:
   - component: {fileID: 1027435150}
   - component: {fileID: 1027435155}
   - component: {fileID: 1027435154}
-  - component: {fileID: 1027435153}
   - component: {fileID: 1027435152}
   - component: {fileID: 1027435151}
   m_Layer: 0
@@ -5266,10 +5253,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027435149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
+  m_Script: {fileID: 11500000, guid: 844bedb3f6cad3a4b80fb62d6a302c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MechaPart: 1
+  m_MoveSpeed: 0.01
+  m_EMechaPart: 1
+  life: 100
 --- !u!114 &1027435152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5283,19 +5272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &1027435153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027435149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.1
 --- !u!23 &1027435154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7101,10 +7077,9 @@ GameObject:
   - component: {fileID: 1406700945}
   - component: {fileID: 1406700950}
   - component: {fileID: 1406700949}
-  - component: {fileID: 1406700948}
   - component: {fileID: 1406700947}
-  - component: {fileID: 1406700946}
   - component: {fileID: 1406700951}
+  - component: {fileID: 1406700946}
   m_Layer: 0
   m_Name: target (2)
   m_TagString: Untagged
@@ -7135,10 +7110,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406700944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b7cce2f273e3946b495f1e648bc45c, type: 3}
+  m_Script: {fileID: 11500000, guid: 844bedb3f6cad3a4b80fb62d6a302c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MechaPart: 2
+  m_MoveSpeed: 0.01
+  m_EMechaPart: 0
+  life: 100
 --- !u!114 &1406700947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7152,19 +7129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &1406700948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406700944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206ad75ba61ee3a4f8ec5808056ab378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.1
 --- !u!23 &1406700949
 MeshRenderer:
   m_ObjectHideFlags: 0
