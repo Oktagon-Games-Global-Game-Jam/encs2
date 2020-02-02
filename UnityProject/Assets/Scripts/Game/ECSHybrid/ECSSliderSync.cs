@@ -5,24 +5,17 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ECSSliderSync : JobComponentSystem
+public class ECSSliderSync : ComponentSystem
 {
     public ECSComponentMono<Slider> m_Sliders;
     
     protected override void OnStartRunning()
     {
         base.OnStartRunning();
-        m_Sliders = new ECSComponentMono<Slider>();    
     }
 
-    protected override JobHandle OnUpdate(JobHandle inputDeps)
+    protected override void OnUpdate()
     {
-        Entities.ForEach((in C_SyncSlider pSync) =>
-            {
-                m_Sliders.GetObject(pSync.Id).value = pSync.Value;
-            })
-            .WithoutBurst()
-            .Run();
-        return inputDeps;
+        Entities.ForEach((ref C_SyncSlider pSync) => { m_Sliders.GetObject(pSync.Id).value = pSync.Value; });
     }
 }

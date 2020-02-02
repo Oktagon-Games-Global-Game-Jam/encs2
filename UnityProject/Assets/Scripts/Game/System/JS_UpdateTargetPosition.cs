@@ -14,7 +14,7 @@ class JS_UpdateTargetPosition : JobComponentSystem
     protected override void OnCreate()
     {
         base.OnCreate();
-        m_MechasQuery = GetEntityQuery(new ComponentType[] { typeof(C_MechaPart), typeof(Translation) });
+        m_MechasQuery = GetEntityQuery(new ComponentType[] { typeof(C_MechaPart), typeof(Translation), typeof(T_Mecha) });
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {

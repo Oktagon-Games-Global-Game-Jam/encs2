@@ -7,11 +7,12 @@ using UnityEngine;
 public class ECSAnimationSync : JobComponentSystem
 {
     private ECSComponentMono<Animator> m_Animations;
-    
-    protected override void OnStartRunning()
+
+    protected override void OnCreate()
     {
-        base.OnStartRunning();
-        m_Animations = new ECSComponentMono<Animator>(Object.FindObjectsOfType<Animator>());    
+        base.OnCreate();
+    
+        m_Animations = new ECSComponentMono<Animator>();    
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)

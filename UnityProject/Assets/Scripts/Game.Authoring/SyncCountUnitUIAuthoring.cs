@@ -8,6 +8,7 @@ public class SyncCountUnitUIAuthoring  : MonoBehaviour, IConvertGameObjectToEnti
     [SerializeField] private HUDView m_Reference;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
+        World.AllWorlds[0].GetOrCreateSystem<ECSCountUnitUISync>().m_HudView = new ECSComponentMono<HUDView>();
         World.AllWorlds[0].GetOrCreateSystem<ECSCountUnitUISync>().m_HudView.AddObject(m_Reference.GetInstanceID(), m_Reference);
         
         dstManager.AddComponent(entity, typeof(C_SyncCountUnitUI));

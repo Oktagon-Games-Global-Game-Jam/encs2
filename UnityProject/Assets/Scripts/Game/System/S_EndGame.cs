@@ -13,8 +13,8 @@ public class S_EndGame : JobComponentSystem
          GetEntityOnChangeVersion = GetEntityQuery(new ComponentType[]
         {
             ComponentType.ReadOnly<C_EndGame>(), 
+            ComponentType.Exclude<T_GameEnd>() 
         });
-        GetEntityOnChangeVersion.AddChangedVersionFilter(ComponentType.ReadOnly<C_EndGame>());
     }
 
     public struct EndGameJob: IJobForEachWithEntity<C_EndGame>
@@ -24,6 +24,7 @@ public class S_EndGame : JobComponentSystem
 
         public void Execute(Entity entity, int index, [ReadOnly]ref C_EndGame tGameWon)
         {
+            eEntityCommandBuffer.AddComponent<T_GameEnd>(index, entity);
             if (tGameWon.IsMechaWinner)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(k.Scenes.UI_Victory, UnityEngine.SceneManagement.LoadSceneMode.Additive);

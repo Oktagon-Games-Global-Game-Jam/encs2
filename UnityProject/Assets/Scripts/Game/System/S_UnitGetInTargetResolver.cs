@@ -7,9 +7,11 @@ using Unity.Transforms;
 public class S_UnitGetInTargetResolver : JobComponentSystem
 {
     public EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    public EntityQuery removeDeadEntities;
     protected override void OnCreate()
     {
         m_EndSimulationEntityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        removeDeadEntities = GetEntityQuery(typeof(C_Unit), ComponentType.Exclude<T_IsDead>());
     }
 
     public struct KamikazeJob : IJobForEachWithEntity<C_Unit, C_ReachTarget, Translation, C_MechaPart>
