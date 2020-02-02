@@ -29,13 +29,10 @@ public class S_SpawnEnemy : JobComponentSystem
     {
         float tTime = Time.DeltaTime;
         float EnemyPositionX = m_GameData.m_LevelData.m_EnemySpawnPointX;
-        float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
-   
         EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
- 
         int tRandomCount = 0;
         Entities.ForEach(
-            (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab) =>
+            (Entity entity, ref C_SpawnData spawnData, ref Prefab prefab, in T_Enemy eEnemy) =>
             {
                 spawnData.TimeCache += tTime;
                 if (spawnData.TimeCache > spawnData.Cooldown)
@@ -50,7 +47,7 @@ public class S_SpawnEnemy : JobComponentSystem
                         
                         tCommandBuffer.SetComponent( tSpawnEntity, new C_SpawnRequest
                         {
-                            Position = new float3((spawnData.IsEnemy? EnemyPositionX : PlayerPositionX) + tX, (int) spawnData.MechaLane, tZ),
+                            Position = new float3(EnemyPositionX + tX, (int) spawnData.MechaLane, tZ) + spawnData.Offset,
                             Direction = 1,
                             Reference = entity
                         });
@@ -58,12 +55,10 @@ public class S_SpawnEnemy : JobComponentSystem
                     }
                     spawnData.TimeCache = 0;
                 }
-                
-              
             })
             .WithoutBurst()
             .Run();
- 
+
         return inputDeps;
     }
 }

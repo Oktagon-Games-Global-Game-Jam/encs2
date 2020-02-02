@@ -11,7 +11,8 @@ public struct C_SpawnData : IComponentData
     public int SpawnAmount;
     public E_MechaPart MechaLane;
     public float4 SpawnArea;
-    public bool IsEnemy;
+    public float3 Offset;
+    //public bool IsEnemy;
     public float ReduceTimeBySecond;
 
     [HideInInspector] public float TimeCache;
