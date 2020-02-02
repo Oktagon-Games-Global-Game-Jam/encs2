@@ -1833,23 +1833,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e819f4ca13b7447a8de52364572bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 0.1
+  m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
-  ReachDistance: 0
+  ReachDistance: 2
   MechaPart: 0
-  ActionDistance: 0
-  MaxLife: 0
-  ActualLife: 0
-  modifyLifeValue: 0
+  ActionDistance: 2
+  MaxLife: 1
+  ActualLife: 1
+  modifyLifeValue: 1
   IsEnemy: 0
   Cooldown: 0
-  SpawnAmount: 0
+  SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
-    x: 0
-    y: 0
-    z: 0
-    w: 0
+    x: -2
+    y: 3
+    z: -2
+    w: 2
   SpawnOffset:
     x: 0
     y: 0
@@ -6061,7 +6061,7 @@ MonoBehaviour:
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
-  MechaPart: 0
+  MechaPart: 1
   ActionDistance: 2.5
   MaxLife: 1
   ActualLife: 1

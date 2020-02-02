@@ -43,6 +43,7 @@ public class S_Spawn : JobComponentSystem
     {
         public ArchetypeChunkComponentType<C_SpawnRequest> SpawnRequestChunk;
         public EntityCommandBuffer.Concurrent CommandBuffer;
+
         public NativeArray<Entity> tEntities;
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
@@ -51,12 +52,12 @@ public class S_Spawn : JobComponentSystem
             {
            
                 Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
-                
+                                
                 CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new Translation
                 {
                     Value = tSpawnRequestArray[i].Position
                 });
-
+                
                
                 CommandBuffer.DestroyEntity(firstEntityIndex, tEntities[firstEntityIndex + i]);
                 // CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new RotationEulerXYZ
