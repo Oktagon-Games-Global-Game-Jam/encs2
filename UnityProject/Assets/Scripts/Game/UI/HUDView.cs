@@ -61,7 +61,7 @@ public class HUDView : MonoBehaviour
     }
     public void SetAmount(int iIdx, int iAmount)
     {
-        m_Buttons[iIdx].m_TextAmount.text = iAmount.ToString();
+        m_Buttons[iIdx].SetAmount(iAmount);
     }
     #endregion
 }
