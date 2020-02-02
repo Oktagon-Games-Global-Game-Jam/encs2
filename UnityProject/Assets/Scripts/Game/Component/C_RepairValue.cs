@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public struct C_LifeToHeal : IComponentData
+public struct C_RepairValue : IComponentData
 {
-    public int LifeToHeal;
+    public int AmoutToRepair;
 }
