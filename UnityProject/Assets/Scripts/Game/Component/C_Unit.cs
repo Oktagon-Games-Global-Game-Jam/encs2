@@ -6,4 +6,5 @@ using UnityEngine;
 public struct C_Unit : IComponentData
 {
     public int ModifyLifeValue;
+    public int ParticleSystemReference;
 }
