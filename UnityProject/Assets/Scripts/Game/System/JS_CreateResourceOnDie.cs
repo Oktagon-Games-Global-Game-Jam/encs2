@@ -47,7 +47,7 @@ class JS_CreateResourceOnDie : JobComponentSystem
         var pTask =
             Entities
             .WithoutBurst()
-            .ForEach((int entityInQueryIndex, in T_IsDead tIsDead, in Translation pTranslation/*, in T_Enemy pEnemy*/) =>
+            .ForEach((int entityInQueryIndex, in T_IsDead tIsDead, in Translation pTranslation, in T_Enemy pEnemy) =>
                 {
                     var pEntity = pBuffer.CreateEntity(entityInQueryIndex);
                     pBuffer.AddComponent(entityInQueryIndex, pEntity, new Translation() { Value = pTranslation.Value });

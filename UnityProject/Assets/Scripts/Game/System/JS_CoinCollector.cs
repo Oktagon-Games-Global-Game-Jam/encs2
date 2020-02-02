@@ -30,8 +30,8 @@ class JS_CoinCollector : ComponentSystem
             Entities.ForEach(
                 (Entity entity, ref C_Resource pRes, ref C_Rotate pRotate) =>
                 {
-                    pRotate.Speed *= 2f;
-                    EntityManager.AddComponentData(entity, new C_AnimateToResource() { Value = 0, Wait = pRand.NextFloat(0, 1f) });
+                    pRotate.Speed *= 5f;
+                    EntityManager.AddComponentData(entity, new C_AnimateToResource() { Value = 0, Wait = pRand.NextFloat(4f, 5f) });
                     EntityManager.RemoveComponent(entity, typeof(C_Resource));
                     })
             ;

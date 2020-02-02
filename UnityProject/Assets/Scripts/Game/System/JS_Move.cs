@@ -35,20 +35,5 @@ public class JS_Move : JobComponentSystem
             })
             .Schedule(inputDeps);
     }
-    /*private JobHandle UpdateTargetPosition(JobHandle inputDeps, float fDelta)
-    {
-        NativeArray<Translation> tTargets = m_MechasQuery.ToComponentDataArray<Translation>(Allocator.TempJob);
-        var pJob = 
-            Entities.ForEach((ref Translation pTranslation, in Rotation pRotation, in C_Move cMove) =>
-            {
-                for (int i = 0; i < tTargets.Length; i++)
-                {
-                    pTranslation.Value = pTranslation.Value + cMove.Speed * math.forward(pRotation.Value);
-                }
-            })
-            .Schedule(inputDeps);
-        tTargets.Dispose();
-        return pJob;
-    }*/
     #endregion
 }
