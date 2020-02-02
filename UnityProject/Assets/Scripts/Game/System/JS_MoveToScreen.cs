@@ -40,6 +40,7 @@ public class JS_MoveToScreen : JobComponentSystem
                     pTranslation.Value += (fTtime * 40f * math.normalize(pTarget - pTranslation.Value));
                     if (math.distance(pTarget, pTranslation.Value) <= 1f)
                     {
+                        //AudioManager.Play(AudioManager.SoundList.AddCoin, false);
                         tCommandBuffer.DestroyEntity(entityInQueryIndex, pEntity);
                     }
                 }

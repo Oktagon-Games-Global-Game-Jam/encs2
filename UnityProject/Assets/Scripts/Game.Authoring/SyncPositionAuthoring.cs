@@ -12,7 +12,9 @@ public class SyncPositionAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         {
             World.AllWorlds[0].GetExistingSystem<ECSPositionSync>().m_Transforms = new ECSComponentMono<Transform>();
         }
+        
         World.AllWorlds[0].GetExistingSystem<ECSPositionSync>().m_Transforms.AddObject(m_ReferenceTransform.GetInstanceID(), m_ReferenceTransform);
+        
         dstManager.AddComponent(entity, typeof(C_SyncPositionMono));
         dstManager.SetComponentData(entity, new C_SyncPositionMono
         {
