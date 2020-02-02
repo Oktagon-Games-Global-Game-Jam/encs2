@@ -15,9 +15,13 @@ public class ECSPositionSync : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_Transforms == null)
+            return inputDeps;
         Entities.ForEach((in C_SyncPositionMono pSync) =>
         {
-            m_Transforms.GetObject(pSync.Id).position = pSync.Position;
+            var p = m_Transforms.GetObject(pSync.Id);
+            if(p)
+                m_Transforms.GetObject(pSync.Id).position = pSync.Position;
         })
             .WithoutBurst()
             .Run();
