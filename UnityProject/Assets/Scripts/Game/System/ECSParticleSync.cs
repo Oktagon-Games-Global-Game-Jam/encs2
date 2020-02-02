@@ -6,13 +6,22 @@ using UnityEngine;
 public class ECSParticleSync : JobComponentSystem
 {
     public ECSComponentMono<ParticleSystemController> m_ParticleSystemControllers;
+    public EndSimulationEntityCommandBufferSystem eEntityCommandBufferSystem;
+
+    protected override void OnCreate()
+    {
+        eEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+            
+    }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        Entities.ForEach((in C_Particle pSync) =>
+        var pBuffer = eEntityCommandBufferSystem.CreateCommandBuffer();
+        Entities.ForEach((int entityInQueryIndex, in Entity entity, in C_Particle pSync) =>
             {
-               
                 m_ParticleSystemControllers.GetObject(pSync.id).SpawnParticle(pSync);
+                pBuffer.RemoveComponent<C_Particle>(entity);
+                
             })
             .WithoutBurst()
             .Run();
