@@ -31,9 +31,9 @@ public class S_ModifyLifeValueMecha : JobComponentSystem
                     {
                         eConcurrent.AddComponent(index, mechaEntities[i], new C_DamageToTake{DamageToTake = cModifyLife.modifyValue*-1});
                     }
-                    else //heal
+                    else //repair
                     {
-                        eConcurrent.AddComponent(index, mechaEntities[i], new C_LifeToHeal(){LifeToHeal = cModifyLife.modifyValue});
+                        eConcurrent.AddComponent(index, mechaEntities[i], new C_RepairValue(){AmoutToRepair = cModifyLife.modifyValue});
                     }
                     eConcurrent.RemoveComponent<C_ModifyLife>(index,entity);
                     break;
