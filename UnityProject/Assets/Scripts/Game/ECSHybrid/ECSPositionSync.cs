@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class ECSPositionSync : JobComponentSystem
 {
-    private ECSComponentMono<Transform> m_Transforms;
+    public ECSComponentMono<Transform> m_Transforms;
     
     protected override void OnStartRunning()
     {
         base.OnStartRunning();
-        m_Transforms = new ECSComponentMono<Transform>(Object.FindObjectsOfType<Transform>());    
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
