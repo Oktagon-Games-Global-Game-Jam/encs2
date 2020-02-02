@@ -3,5 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public struct T_GameWon : IComponentData
-{ }
+public struct C_EndGame : IComponentData
+{
+    public bool IsMechaWinner;
+}

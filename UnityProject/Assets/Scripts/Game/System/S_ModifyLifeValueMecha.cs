@@ -2,7 +2,7 @@
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
-
+[UpdateBefore(typeof(S_Die))]
 public class S_ModifyLifeValueMecha : JobComponentSystem
 {
     
@@ -15,11 +15,11 @@ public class S_ModifyLifeValueMecha : JobComponentSystem
         m_GetMechaParts = GetEntityQuery(typeof(T_Mecha), ComponentType.ReadOnly<C_MechaPart>());
     }
 
-    public struct DealDamageToMechaJob : IJobForEachWithEntity<C_ModifyLife, C_MechaPart>
+    public struct ModifyMechaLifeJob : IJobForEachWithEntity<C_ModifyLife, C_MechaPart>
     {
         public EntityCommandBuffer.Concurrent eConcurrent;
-        public NativeArray<Entity> mechaEntities;
-        public NativeArray<C_MechaPart> mechaParts;
+        [ReadOnly]public NativeArray<Entity> mechaEntities;
+        [ReadOnly]public NativeArray<C_MechaPart> mechaParts;
 
         public void Execute(Entity entity, int index, [ReadOnly]ref C_ModifyLife cModifyLife, [ReadOnly]ref C_MechaPart cMechaPart)
         {
@@ -47,14 +47,16 @@ public class S_ModifyLifeValueMecha : JobComponentSystem
     {
         NativeArray<Entity> mechas = m_GetMechaParts.ToEntityArray(Allocator.TempJob);
         NativeArray<C_MechaPart> mechaParts = m_GetMechaParts.ToComponentDataArray<C_MechaPart>(Allocator.TempJob);
-        JobHandle jobHandle = new DealDamageToMechaJob
+        JobHandle jobHandle = new ModifyMechaLifeJob
         {
             eConcurrent = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),
             mechaEntities = mechas,
             mechaParts = mechaParts
         }.Schedule(this, inputDeps);
-        ;
-       
-        return  JobHandle.CombineDependencies(mechaParts.Dispose(jobHandle), mechas.Dispose(jobHandle)); 
+        jobHandle.Complete();
+        mechas.Dispose();
+        mechaParts.Dispose();
+
+        return  jobHandle; 
     }
 }

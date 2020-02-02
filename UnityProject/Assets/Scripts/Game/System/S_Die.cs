@@ -4,10 +4,12 @@ using Unity.Jobs;
 public class S_Die : JobComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    private EntityQuery m_RemoveAllMecha;
     
     protected override void OnCreate()
     {
         m_EndSimulationEntityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        m_RemoveAllMecha = GetEntityQuery(ComponentType.ReadOnly<T_IsDead>() ,ComponentType.Exclude<T_Mecha>());
     }
     public struct DieJob : IJobForEachWithEntity<T_IsDead>
     {
@@ -23,7 +25,7 @@ public class S_Die : JobComponentSystem
         JobHandle jobHandle = new DieJob
         {
             eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent()
-        }.Schedule(this, inputDeps);
+        }.Schedule(m_RemoveAllMecha, inputDeps);
         jobHandle.Complete();
         return jobHandle;
     }
