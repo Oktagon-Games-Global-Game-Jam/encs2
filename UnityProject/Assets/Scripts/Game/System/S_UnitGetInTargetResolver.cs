@@ -17,7 +17,7 @@ public class S_UnitGetInTargetResolver : JobComponentSystem
         public EntityCommandBuffer.Concurrent eEntityCommandBuffer;
         public void Execute(Entity entity, int index, [ReadOnly]ref C_Unit cUnit, [ReadOnly]ref C_ReachTarget cReachTarget, [ReadOnly]ref Translation pTranslation, [ReadOnly]ref C_MechaPart cMechaPart)
         {
-            if (Math.DistanceXZ(cReachTarget.TargetPosition, pTranslation.Value) <= 1f)
+            if (Math.DistanceXZ(cReachTarget.TargetPosition, pTranslation.Value) <= cReachTarget.ActionDistance)
             {
                 eEntityCommandBuffer.AddComponent(index, entity, new C_DamageToTake{DamageToTake = 1});
                 Entity damageMechaEntity = eEntityCommandBuffer.CreateEntity(index);

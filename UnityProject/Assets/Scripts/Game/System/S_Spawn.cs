@@ -49,13 +49,14 @@ public class S_Spawn : JobComponentSystem
             NativeArray<C_SpawnRequest> tSpawnRequestArray = chunk.GetNativeArray(SpawnRequestChunk);
             for (int i = 0; i < chunk.Count; i++)
             {
-                CommandBuffer.SetComponent(firstEntityIndex, tSpawnRequestArray[i].Reference, new Translation
+           
+                Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
+                
+                CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new Translation
                 {
                     Value = tSpawnRequestArray[i].Position
                 });
-                
-                Entity tSpawnedEntity = CommandBuffer.Instantiate(firstEntityIndex, tSpawnRequestArray[i].Reference);
-                
+
                
                 CommandBuffer.DestroyEntity(firstEntityIndex, tEntities[firstEntityIndex + i]);
                 // CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new RotationEulerXYZ
