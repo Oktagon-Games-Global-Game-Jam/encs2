@@ -23,7 +23,7 @@ public class S_Input : ComponentSystem
   
         Entities.ForEach((ref C_InputData inputData) =>
             {
-                inputData.DeltaMove =  tHolding? tCurrentFramePosition - lastFramePosition : math.lerp( inputData.DeltaMove, float2.zero, 0.05f);
+                inputData.DeltaMove =  tHolding? lastFramePosition - tCurrentFramePosition : math.lerp( inputData.DeltaMove, float2.zero, 0.05f);
             });
         lastFramePosition = tCurrentFramePosition;
     }
