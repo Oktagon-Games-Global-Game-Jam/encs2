@@ -39,6 +39,12 @@ class JS_CreateResourceOnDie : JobComponentSystem
 
         m_KillQuery.AddChangedVersionFilter(ComponentType.ReadOnly<T_IsDead>());
     }
+    
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_KillQuery.Dispose();
+    }
 
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)

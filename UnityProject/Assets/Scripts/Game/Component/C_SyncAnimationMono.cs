@@ -11,5 +11,6 @@ public enum E_State
 {
     Walking,
     Attacking,
-    Win
+    Win,
+    Defeat
 }

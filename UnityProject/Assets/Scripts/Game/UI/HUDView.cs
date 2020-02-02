@@ -59,9 +59,9 @@ public class HUDView : MonoBehaviour
     {
         m_Buttons[iIdx].m_Button.interactable = bEnabled;
     }
-    public void SetAmount(int iIdx, int iAmount)
+    public void SetAmount(E_MechaPart pPartType, int iAmount)
     {
-        m_Buttons[iIdx].SetAmount(iAmount);
+        m_Buttons[(int)pPartType].m_TextAmount.text = iAmount.ToString();
     }
     #endregion
 }

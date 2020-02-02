@@ -15,9 +15,14 @@ public class S_WinCondition : JobComponentSystem
         m_EndSimulationEntityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
         m_GetNotWonMechas = GetEntityQuery(ComponentType.ReadOnly<T_Mecha>(), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<C_MechaPart>(),
             ComponentType.Exclude<C_EndGame>());
+        
+    }
+
+    protected override void OnStartRunning()
+    {
         m_GameData = Object.FindObjectOfType<GameData>();
     }
-    
+
     public struct WonGameCondition : IJobForEachWithEntity<T_Mecha, Translation, C_MechaPart>
     {
         public EntityCommandBuffer.Concurrent eEntityCommandBuffer;
