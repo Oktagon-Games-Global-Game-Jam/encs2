@@ -26,9 +26,14 @@ public class S_EndGame : JobComponentSystem
         {
             if (tGameWon.IsMechaWinner)
             {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(k.Scenes.UI_Victory, UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 Debug.Log("GameWon");
-            }else
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(k.Scenes.UI_Defeat, UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 Debug.Log("GameLost");
+            }
 
         }
     }
@@ -37,8 +42,15 @@ public class S_EndGame : JobComponentSystem
         JobHandle jobHandle = new EndGameJob
         {
             eEntityCommandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),
-        }.Schedule(GetEntityOnChangeVersion, inputDeps);
+        }
+        .Run(GetEntityOnChangeVersion, inputDeps);
+        //.Schedule(GetEntityOnChangeVersion, inputDeps);
         jobHandle.Complete();
         return jobHandle;
     }
+
+    //protected override void OnUpdate()
+    //{
+    //    Entities.ForEach()
+    //}
 }
