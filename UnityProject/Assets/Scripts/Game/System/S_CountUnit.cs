@@ -36,14 +36,7 @@ public class S_CountUnit : JobComponentSystem
         m_KillQuery.AddChangedVersionFilter(ComponentType.ReadOnly<T_IsDead>());
         
     }
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        m_KillQuery.Dispose();
-        m_ScoreQuery.Dispose();
-        m_EnemyUnitQuery.Dispose();
-        m_PlayerUnitQuery.Dispose();
-    }
+
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {

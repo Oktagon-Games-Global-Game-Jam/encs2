@@ -30,7 +30,11 @@ public class MainMenuController : MonoBehaviour
 
     public void StarGame()
     {
-        SceneManager.LoadScene("Scenes/Game",LoadSceneMode.Single);
+        SceneManager.LoadScene("Scenes/Game");
+        
+        World.DisposeAllWorlds();
+        
+
     }
 
 }
