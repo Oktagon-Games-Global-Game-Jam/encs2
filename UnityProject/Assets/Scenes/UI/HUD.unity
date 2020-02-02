@@ -1095,10 +1095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db864af082424bf4fbed553b3f664516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_KillCountController: {fileID: 0}
+  m_KillCountController: {fileID: 818477276}
   m_TextKillCount: {fileID: 14693385}
-  m_TextUnitPlayerCount: {fileID: 0}
-  m_TextUnitEnemyCount: {fileID: 0}
+  m_TextUnitPlayerCount: {fileID: 692070254}
+  m_TextUnitEnemyCount: {fileID: 1002188215}
   m_ButtonSpawnTemplate: {fileID: 0}
   m_Buttons:
   - {fileID: 4397815938006743811}
@@ -1404,6 +1404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604596786}
   - component: {fileID: 1604596785}
+  - component: {fileID: 1604596787}
   m_Layer: 0
   m_Name: HudEntity
   m_TagString: Untagged
@@ -1438,6 +1439,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1604596787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604596784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConversionMode: 0
 --- !u!1 &1675857239
 GameObject:
   m_ObjectHideFlags: 0
