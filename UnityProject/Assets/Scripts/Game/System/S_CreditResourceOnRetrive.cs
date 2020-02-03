@@ -15,12 +15,12 @@ public class S_CreditResourceOnRetrive : ComponentSystem
         {    
             ComponentType.ReadOnly<C_Resource>(), 
         });
-        AmountResource = 100;
+        AmountResource = 150;
         m_Query.SetChangedVersionFilter(ComponentType.ReadOnly<C_Resource>());
     }
 
     protected override void OnUpdate()
     {
-        AmountResource += m_Query.CalculateChunkCount() * 5;
+        AmountResource += m_Query.CalculateChunkCount() * 2;
     }
 }

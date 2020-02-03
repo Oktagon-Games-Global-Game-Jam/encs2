@@ -38,7 +38,7 @@ public class JS_MoveToScreen : JobComponentSystem
                 pAnimate.Wait -= fTtime;
                 if (pAnimate.Wait <= 0)
                 {
-                    pTranslation.Value += (fTtime * 40f * math.normalize(pTarget - pTranslation.Value));
+                    pTranslation.Value += (fTtime * 5f * math.normalize(pTarget - pTranslation.Value));
                     if (math.distance(pTarget, pTranslation.Value) <= 1f)
                     {
                         //AudioManager.Play(AudioManager.SoundList.AddCoin, false);

@@ -59,7 +59,7 @@ public class S_Spawn : JobComponentSystem
                 {
                     Value = tSpawnRequestArray[i].Position
                 });
-                
+                CommandBuffer.AddComponent<T_RecentlyCreated>(firstEntityIndex, tSpawnedEntity);
                
                 CommandBuffer.DestroyEntity(firstEntityIndex, tEntities[firstEntityIndex + i]);
                 // CommandBuffer.SetComponent(firstEntityIndex, tSpawnedEntity, new RotationEulerXYZ

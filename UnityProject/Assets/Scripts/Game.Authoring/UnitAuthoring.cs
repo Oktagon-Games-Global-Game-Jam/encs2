@@ -40,6 +40,7 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData(entity, new C_Unit{ModifyLifeValue = modifyLifeValue, ParticleSystemReference = reference.GetInstanceID()});
         dstManager.AddComponentData(entity, new C_SpawnData{ Cooldown = Cooldown, MechaLane = MechaPart, SpawnAmount = SpawnAmount, TimeCache = 0, ReduceTimeBySecond = ReduceByTime, SpawnArea = SpawnArea, Offset = SpawnOffset});
         dstManager.AddComponentData(entity, new Prefab());
+     
         if (IsEnemy)
             dstManager.AddComponentData(entity, new T_Enemy());
         else

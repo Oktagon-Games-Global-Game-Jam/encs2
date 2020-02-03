@@ -32,7 +32,6 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/Game");
         
-        World.DisposeAllWorlds();
         
 
     }

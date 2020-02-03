@@ -41,7 +41,7 @@ public class S_SpawnEnemy : JobComponentSystem
                     {
                         Entity tSpawnEntity = tCommandBuffer.CreateEntity();
                         tCommandBuffer.AddComponent(tSpawnEntity, typeof(C_SpawnRequest));
-
+                        
                         float tX = Random.Range(spawnData.SpawnArea.x, spawnData.SpawnArea.y);
                         float tZ = Random.Range(spawnData.SpawnArea.z, spawnData.SpawnArea.w);
                         

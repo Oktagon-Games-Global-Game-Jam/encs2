@@ -790,7 +790,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1268633314}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &257845491
 MonoBehaviour:
@@ -916,7 +916,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -669
   m_Sprite: {fileID: 21300000, guid: 857d474ee8ac17249aa859365c1de4ab, type: 3}
   m_Color: {r: 0.7924528, g: 0.7620817, b: 0.736383, a: 1}
   m_FlipX: 0
@@ -1816,11 +1816,11 @@ MonoBehaviour:
   ReachDistance: 8
   MechaPart: 2
   ActionDistance: 2.5
-  MaxLife: 1
-  ActualLife: 1
+  MaxLife: 2
+  ActualLife: 2
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 2
+  Cooldown: 1.2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -2568,11 +2568,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792839305}
-  m_LocalRotation: {x: -0.19080894, y: -0, z: -0, w: 0.9816273}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.454529, y: 2.4545295, z: 2.454529}
   m_Children: []
-  m_Father: {fileID: 1268633314}
+  m_Father: {fileID: 1337799492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &794281503
@@ -2599,7 +2599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794281503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.77, y: -0.45, z: 0}
+  m_LocalPosition: {x: -34.77, y: -0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1720795017}
@@ -8388,11 +8388,11 @@ MonoBehaviour:
   ReachDistance: 8
   MechaPart: 0
   ActionDistance: 2.5
-  MaxLife: 1
+  MaxLife: 2
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 1.5
+  Cooldown: 1
   SpawnAmount: 2
   ReduceByTime: 0
   SpawnArea:
@@ -8981,7 +8981,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 14.1, z: -16.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 792839306}
   - {fileID: 257845490}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -9055,6 +9054,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a4c4b0ec1ca681429432f3ea060f8a1, type: 3}
+--- !u!1001 &1337799491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 634237151}
+    m_Modifications:
+    - target: {fileID: 100000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_Name
+      value: spaceCraft3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.053613916
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.053613916
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.053613916
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1bc789d393462b4596f494e4a3d2426, type: 3}
+--- !u!4 &1337799492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: e1bc789d393462b4596f494e4a3d2426,
+    type: 3}
+  m_PrefabInstance: {fileID: 1337799491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1365501410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9758,11 +9832,11 @@ MonoBehaviour:
   ReachDistance: 8
   MechaPart: 1
   ActionDistance: 2.5
-  MaxLife: 1
-  ActualLife: 1
+  MaxLife: 2
+  ActualLife: 2
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 2
+  Cooldown: 1.2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -10299,11 +10373,11 @@ MonoBehaviour:
   ReachDistance: 8
   MechaPart: 1
   ActionDistance: 2.5
-  MaxLife: 1
-  ActualLife: 1
+  MaxLife: 2
+  ActualLife: 2
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 2
+  Cooldown: 1.2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -16388,7 +16462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1969219143
 Transform:
   m_ObjectHideFlags: 0
@@ -16438,7 +16512,7 @@ MonoBehaviour:
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 2
+  Cooldown: 1.2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
@@ -16622,11 +16696,11 @@ MonoBehaviour:
   ReachDistance: 8
   MechaPart: 2
   ActionDistance: 2.5
-  MaxLife: 1
-  ActualLife: 1
+  MaxLife: 2
+  ActualLife: 2
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 2
+  Cooldown: 1.2
   SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
