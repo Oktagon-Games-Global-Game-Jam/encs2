@@ -25,6 +25,9 @@ public class S_RepairLife : JobComponentSystem
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         JobHandle jobHandle = new RepairJob
             {eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent()}.Schedule(this, inputDeps);
         jobHandle.Complete();

@@ -28,6 +28,9 @@ public class JS_StopReached : JobComponentSystem
     }
     private JobHandle RemoveReachedComponents(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         var pBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
         return
             Entities.ForEach((int entityInQueryIndex, Entity pEntity, in C_Move pMove, in C_ReachTarget cReachTarget, in C_TargetReached pTargetReached) =>

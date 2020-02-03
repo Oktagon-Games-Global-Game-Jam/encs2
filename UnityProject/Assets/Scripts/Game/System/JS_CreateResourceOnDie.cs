@@ -29,6 +29,8 @@ class JS_CreateResourceOnDie : JobComponentSystem
     protected override void OnCreate()
     {
         base.OnCreate();
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         m_KillQuery = GetEntityQuery(new ComponentType[]
         {
@@ -44,6 +46,8 @@ class JS_CreateResourceOnDie : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         var pBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
         var pTask =
             Entities

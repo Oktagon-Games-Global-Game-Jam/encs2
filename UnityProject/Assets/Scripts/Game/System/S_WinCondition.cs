@@ -38,6 +38,9 @@ public class S_WinCondition : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         JobHandle jobHandle = new WonGameCondition
         {
             eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),

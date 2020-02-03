@@ -30,6 +30,9 @@ public class S_UnitGetInTargetResolver : JobComponentSystem
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         JobHandle jobHandle = new KamikazeJob
         {
             eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),

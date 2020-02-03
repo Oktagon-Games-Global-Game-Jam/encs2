@@ -10,7 +10,6 @@ public class JS_MoveToScreen : JobComponentSystem
 {
 
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
-    float3 m_pTarget = float3.zero;
     Transform m_Transform;
 
     protected override void OnCreate()
@@ -28,6 +27,8 @@ public class JS_MoveToScreen : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         float fTtime = Time.DeltaTime;
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         var tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
         float3 pTarget = m_Transform.position;// m_pTarget;
         return 

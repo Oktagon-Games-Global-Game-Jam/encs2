@@ -23,6 +23,8 @@ public class S_Spawn : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if(m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<BeginSimulationEntityCommandBufferSystem>();
         NativeArray<Entity> tEntities = m_Query.ToEntityArray(Allocator.TempJob);
         J_SpawnJob tSpawnJob = new J_SpawnJob
         {

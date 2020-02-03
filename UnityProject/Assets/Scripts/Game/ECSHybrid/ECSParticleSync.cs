@@ -16,6 +16,9 @@ public class ECSParticleSync : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (eEntityCommandBufferSystem == null)
+            eEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         var pBuffer = eEntityCommandBufferSystem.CreateCommandBuffer();
         Entities.ForEach((int entityInQueryIndex, in Entity entity, in C_Particle pSync) =>
             {

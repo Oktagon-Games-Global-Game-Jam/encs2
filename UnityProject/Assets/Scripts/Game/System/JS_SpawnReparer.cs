@@ -36,6 +36,8 @@ class JS_SpawnReparer : JobComponentSystem
             int Resource = World.GetExistingSystem<S_CreditResourceOnRetrive>().AmountResource;
             float tTime = Time.DeltaTime;
             float PlayerPositionX = m_GameData.m_LevelData.m_PlayerSpawnPointX;
+            if (m_EndSimulationEntityCommandBufferSystem == null)
+                m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
             EntityCommandBuffer tCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer();
             
             int tRandomCount = 0;

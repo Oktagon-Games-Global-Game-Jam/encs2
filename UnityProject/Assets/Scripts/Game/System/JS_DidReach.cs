@@ -27,6 +27,8 @@ class JS_DidReach : JobComponentSystem
 
     private JobHandle DidReachSchedule(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         var pBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
         return
             Entities.ForEach((int entityInQueryIndex, Entity pEntity, ref C_ReachTarget cReachTarget, in Translation pTrans) =>

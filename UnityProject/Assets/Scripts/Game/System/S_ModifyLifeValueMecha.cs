@@ -44,6 +44,9 @@ public class S_ModifyLifeValueMecha : JobComponentSystem
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
+
         NativeArray<Entity> mechas = m_GetMechaParts.ToEntityArray(Allocator.TempJob);
         NativeArray<C_MechaPart> mechaParts = m_GetMechaParts.ToComponentDataArray<C_MechaPart>(Allocator.TempJob);
         JobHandle jobHandle = new ModifyMechaLifeJob

@@ -25,6 +25,8 @@ public class S_LoseCondition : JobComponentSystem
     
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        if (m_EndSimulationEntityCommandBufferSystem == null)
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         JobHandle jobHandle = new LoseJob{eEntityCommandBuffer = m_EndSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent()}.Schedule(m_ExcludeAlreadyWonEntities);
         jobHandle.Complete();
         return jobHandle;
