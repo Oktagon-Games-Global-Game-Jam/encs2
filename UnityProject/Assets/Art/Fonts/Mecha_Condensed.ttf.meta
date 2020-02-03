@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3c7af08449872194b84e4ad66b3205db
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mecha Condensed
+  fontNames:
+  - Mecha Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7b3db8471af963d43b72ebaa34e60143, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

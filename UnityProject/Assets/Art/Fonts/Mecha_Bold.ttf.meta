@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a5f843a6eee9c884282bdf09cd95a7a0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mecha
+  fontNames:
+  - Mecha
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 61c8fd5b2b0d2d14c8295d2c2beaf687, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
