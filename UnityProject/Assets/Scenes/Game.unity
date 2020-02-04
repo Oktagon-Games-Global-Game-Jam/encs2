@@ -970,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316297097}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -39.5, y: 2, z: -0}
+  m_LocalPosition: {x: -39.5, y: 2.539, z: -0}
   m_LocalScale: {x: 0.010945252, y: 0.010945251, z: 0.010945252}
   m_Children: []
   m_Father: {fileID: 719156516}
@@ -1021,7 +1021,7 @@ MonoBehaviour:
     w: 2
   SpawnOffset:
     x: 0
-    y: 4
+    y: 4.5
     z: 0
 --- !u!23 &316297101
 MeshRenderer:
@@ -1815,7 +1815,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
   MechaPart: 2
-  ActionDistance: 2.5
+  ActionDistance: 0.5
   MaxLife: 2
   ActualLife: 2
   modifyLifeValue: -1
@@ -2928,7 +2928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &893468843
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -3001,7 +3001,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893468842}
   serializedVersion: 6
-  lengthInSec: 0.4
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -3567,7 +3567,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4265,7 +4265,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 0, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7671,13 +7671,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893468842}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.71, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901894095 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 2458c97181da62a439d20311af32f1e0,
@@ -8383,17 +8383,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 893468845}
-  m_MoveSpeed: 0.05
+  m_MoveSpeed: 0.1
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
-  MechaPart: 0
-  ActionDistance: 2.5
+  MechaPart: 2
+  ActionDistance: 0.5
   MaxLife: 2
   ActualLife: 1
   modifyLifeValue: -1
   IsEnemy: 1
-  Cooldown: 1
-  SpawnAmount: 2
+  Cooldown: 10
+  SpawnAmount: 1
   ReduceByTime: 0
   SpawnArea:
     x: -2
@@ -9831,7 +9831,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
   MechaPart: 1
-  ActionDistance: 2.5
+  ActionDistance: 0.5
   MaxLife: 2
   ActualLife: 2
   modifyLifeValue: -1
@@ -10372,7 +10372,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
   MechaPart: 1
-  ActionDistance: 2.5
+  ActionDistance: 0.5
   MaxLife: 2
   ActualLife: 2
   modifyLifeValue: -1
@@ -16507,7 +16507,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
   MechaPart: 2
-  ActionDistance: 2.5
+  ActionDistance: 0.5
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: -1
@@ -16695,7 +16695,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   ReachDistance: 8
   MechaPart: 2
-  ActionDistance: 2.5
+  ActionDistance: 0.5
   MaxLife: 2
   ActualLife: 2
   modifyLifeValue: -1

@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
-
+[UpdateBefore(typeof(S_Die))]
 public class S_SpawnParticleOnUnitDie : JobComponentSystem
 {
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
@@ -37,7 +37,9 @@ public class S_SpawnParticleOnUnitDie : JobComponentSystem
                 .ForEach((int entityInQueryIndex, in T_IsDead tIsDead, in Translation pTranslation, in C_Unit unit) =>
                 {
                     var pEntity = pBuffer.CreateEntity(entityInQueryIndex);
-                    pBuffer.AddComponent(entityInQueryIndex, pEntity, new C_Particle{id = unit.ParticleSystemReference,ParticlePos = pTranslation.Value, Count = 1});
+                    pBuffer.AddComponent(entityInQueryIndex, pEntity, new C_Particle{id = unit.ParticleSystemReference, Count = 1});
+                    pBuffer.AddComponent(entityInQueryIndex, pEntity, new Translation{Value = pTranslation.Value});
+                    pBuffer.AddComponent(entityInQueryIndex, pEntity, new LocalToWorld());
                     
                 })
                 .Schedule(m_KillQuery.GetDependency());
