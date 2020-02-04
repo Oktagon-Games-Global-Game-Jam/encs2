@@ -1004,9 +1004,9 @@ MonoBehaviour:
   reference: {fileID: 893468845}
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
-  ReachDistance: 1.5
+  ReachDistance: 2
   MechaPart: 2
-  ActionDistance: 1.5
+  ActionDistance: 2
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: 1
@@ -1215,9 +1215,9 @@ MonoBehaviour:
   reference: {fileID: 893468845}
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
-  ReachDistance: 2
+  ReachDistance: 3
   MechaPart: 0
-  ActionDistance: 2
+  ActionDistance: 3
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: 1
@@ -1949,7 +1949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cb1bf367524e444dbfe1ec80e1dd8e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.39
+      value: 32.46
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cb1bf367524e444dbfe1ec80e1dd8e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1957,7 +1957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cb1bf367524e444dbfe1ec80e1dd8e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.2899995
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cb1bf367524e444dbfe1ec80e1dd8e2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2439,7 +2439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9364ed54b3c3e804b8b474345be347aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.4
+      value: 43.47
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9364ed54b3c3e804b8b474345be347aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2447,7 +2447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9364ed54b3c3e804b8b474345be347aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.87
+      value: 7.21
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9364ed54b3c3e804b8b474345be347aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8069,9 +8069,9 @@ MonoBehaviour:
   reference: {fileID: 893468845}
   m_MoveSpeed: 0.07
   TargetPosition: {x: 0, y: 0, z: 0}
-  ReachDistance: 2
+  ReachDistance: 3
   MechaPart: 1
-  ActionDistance: 2
+  ActionDistance: 3
   MaxLife: 1
   ActualLife: 1
   modifyLifeValue: 1
@@ -9758,7 +9758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430412389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.88, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1532463369}
