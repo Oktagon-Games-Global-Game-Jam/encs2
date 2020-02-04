@@ -9,12 +9,12 @@ using UnityEngine;
 
 public class S_Spawn : JobComponentSystem
 {
-    private BeginSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
+    private EndSimulationEntityCommandBufferSystem m_EndSimulationEntityCommandBufferSystem;
     private EntityQuery m_Query;
     protected override void OnCreate()
     {
         base.OnCreate();
-        m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<BeginSimulationEntityCommandBufferSystem>();
+        m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         m_Query = GetEntityQuery(new ComponentType[]
         {
             ComponentType.ReadWrite<C_SpawnRequest>(), 
@@ -24,7 +24,7 @@ public class S_Spawn : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         if(m_EndSimulationEntityCommandBufferSystem == null)
-            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<BeginSimulationEntityCommandBufferSystem>();
+            m_EndSimulationEntityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
         NativeArray<Entity> tEntities = m_Query.ToEntityArray(Allocator.TempJob);
         J_SpawnJob tSpawnJob = new J_SpawnJob
         {

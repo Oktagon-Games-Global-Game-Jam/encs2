@@ -25,7 +25,7 @@ public class JS_Move : JobComponentSystem
         return
             Entities.ForEach((ref Translation pTranslation, in Rotation pRotation, in C_Move cMove) =>
             {
-                pTranslation.Value = pTranslation.Value + (cMove.Speed * math.forward(pRotation.Value) * fDelta * 100f);
+                pTranslation.Value = pTranslation.Value + (cMove.Speed * fDelta * 100f);
             })
             .Schedule(inputDeps);
     }

@@ -29,21 +29,24 @@ class JS_UpdateTargetPosition : JobComponentSystem
         NativeArray<Entity> tTargets = m_MechasQuery.ToEntityArray(Allocator.TempJob);// ToComponentDataArray<Entity>(Allocator.TempJob);
         var pJob =
             Entities.ForEach((ref C_ReachTarget pTarget, in C_MechaPart pMechaPart) =>
-            {
-                for (int i = 0; i < naMechaPart.Length ; i++)
                 {
-                    if( pMechaPart.MechaPart == naMechaPart[i].MechaPart)
+                    for (int i = 0; i < naMechaPart.Length ; i++)
                     {
-                        pTarget.TargetPosition = naMechaTranslation[i].Value;
-                        break;
+                        if( pMechaPart.MechaPart == naMechaPart[i].MechaPart)
+                        {
+                            pTarget.TargetPosition = naMechaTranslation[i].Value;
+                            break;
+                        }
                     }
-                }
-            })
-            .Schedule(inputDeps);
-        var pJobHandle1 = tTargets.Dispose(pJob);
-        var pJobHandle2 = naMechaTranslation.Dispose(pJob);
-        var pJobHandle3 = naMechaPart.Dispose(pJob);
-        return JobHandle.CombineDependencies(pJobHandle1, pJobHandle2, pJobHandle3);
+                })
+                .Schedule(inputDeps);
+      
+        pJob.Complete();
+
+        naMechaPart.Dispose();
+        naMechaTranslation.Dispose();
+        tTargets.Dispose();
+        return pJob;
         //return pJob;
     }
 }

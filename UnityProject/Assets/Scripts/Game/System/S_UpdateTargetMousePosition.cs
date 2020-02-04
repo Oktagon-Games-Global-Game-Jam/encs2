@@ -16,8 +16,14 @@ class S_UpdateTargetMousePosition : JobComponentSystem
     {
         base.OnCreate();
         m_InputsQuery = GetEntityQuery(new ComponentType[] { typeof(C_InputData) });
+    }
+
+    protected override void OnStartRunning()
+    {
+        base.OnStartRunning();
         m_GameData = Object.FindObjectOfType<GameData>();
     }
+
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var tInputData = m_InputsQuery.ToComponentDataArray<C_InputData>(Allocator.TempJob);

@@ -12,8 +12,6 @@ public class S_Input : ComponentSystem
     protected override void OnCreate()
     {
         base.OnCreate();
-        Entity tInputDataEntity = World.EntityManager.CreateEntity();
-        World.EntityManager.AddComponent(tInputDataEntity, typeof(C_InputData));
     }
 
     protected override void OnUpdate()

@@ -4,7 +4,7 @@ using Unity.Mathematics;
 [GenerateAuthoringComponent]
 public struct C_Move : IComponentData
 {
-    public float Speed;
+    public float3 Speed;
 }
 
 

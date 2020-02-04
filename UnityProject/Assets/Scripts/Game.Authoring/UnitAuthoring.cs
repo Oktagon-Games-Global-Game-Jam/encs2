@@ -9,7 +9,7 @@ public class UnitAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
     [SerializeField] public ParticleSystemController reference;
     [Header("Move")]
-    public float m_MoveSpeed = .1f;
+    public float3 m_MoveSpeed;
     [Header("Reach Taret")]
     public Vector3 TargetPosition;
     public float ReachDistance;
