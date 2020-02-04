@@ -47,7 +47,7 @@ public class S_SpawnEnemy : JobComponentSystem
                         
                         tCommandBuffer.SetComponent( tSpawnEntity, new C_SpawnRequest
                         {
-                            Position = new float3(EnemyPositionX + tX, (int) spawnData.MechaLane * 1.5f, tZ) + spawnData.Offset,
+                            Position = new float3(EnemyPositionX + tX, (int) spawnData.MechaLane * 1.25f, tZ) + spawnData.Offset,
                             Direction = 1,
                             Reference = entity
                         });
